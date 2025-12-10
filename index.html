@@ -15,7 +15,7 @@
       --accent:#376a45;
       --accent-2:#2f5a3b;
       --card-bg: rgba(255,255,255,0.07);
-      --max-inner:1200px;
+      --max-inner:1100px; /* limitado para evitar esticamento */
       --gutter:20px;
       --radius:14px;
       --glass: rgba(255,255,255,0.02);
@@ -26,61 +26,41 @@
     .inner{max-width:var(--max-inner);margin:0 auto;padding:24px var(--gutter);}
     a{color:inherit;text-decoration:none}
     img{max-width:100%;height:auto;display:block}
+    button{font-family:inherit}
 
     /* HEADER */
     header{background:var(--bg);border-bottom:1px solid rgba(255,255,255,0.03);position:sticky;top:0;z-index:120}
     .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
-    .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px;cursor:pointer}
     .brand img{height:32px}
     .menu{display:flex;gap:12px;align-items:center}
     .menu a{font-size:14px;padding:8px 10px;border-radius:8px;cursor:pointer;color:rgba(255,255,255,0.9)}
     .menu a:hover{background:rgba(255,255,255,0.06)}
 
-    /* HERO + CAROUSEL (AJUSTES PARA EVITAR SOBREPOSIÇÃO) */
+    /* HERO (centralizado e com impacto) */
     .hero{
-      padding:48px 0 36px; /* mais espaço embaixo para evitar encavalamento */
+      padding:56px 0 36px;
       border-bottom:1px solid rgba(255,255,255,0.05);
-      position:relative;
-      z-index:10;
     }
+    .hero-inner{display:block;text-align:center}
+    .hero-title{font-size:56px;margin:0;line-height:0.98;font-weight:800}
+    .hero-lead{margin-top:12px;color:var(--muted);max-width:760px;margin-left:auto;margin-right:auto;font-size:18px}
+    .hero-ctas{display:flex;gap:12px;margin-top:20px;justify-content:center}
+    .btn{background:linear-gradient(180deg,var(--accent),var(--accent-2));padding:10px 16px;border-radius:10px;color:#fff;font-weight:700;display:inline-block;border:none;cursor:pointer}
 
-    .hero-inner{
-      display:flex;
-      align-items:flex-start;   /* garantir que o texto alinha topo */
-      gap:22px;
-      flex-wrap:wrap;
-    }
-
-    .hero-left{
-      flex: 1 1 520px;         /* cresce prioritariamente, evita invasão do carrossel */
-      min-width:260px;
-      z-index:12;
-    }
-
-    .hero-title{font-size:44px;margin:0;line-height:1;font-weight:800}
-    .hero-lead{margin-top:8px;color:var(--muted);max-width:860px}
-
-    .hero-ctas{display:flex;gap:12px;margin-top:12px}
-    .btn{background:linear-gradient(180deg,var(--accent),var(--accent-2));padding:10px 16px;border-radius:10px;color:#fff;font-weight:700;display:inline-block}
-
-    /* carousel: largura fixa, não expande além do necessário */
-    .home-carousel{
-      display:flex;
-      gap:12px;
-      flex: 0 0 auto;      /* <--- evita que o carrossel "puxe" o layout e encavale o texto */
-      min-width:240px;
-      align-items:flex-start;
-    }
-
+    /* CARROSSEL (compacto abaixo do hero) */
+    .home-carousel-wrap{margin-top:28px;display:flex;justify-content:center}
+    .home-carousel{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;max-width:980px}
     .carousel-card{
       background:var(--card-bg);
-      padding:14px;border-radius:12px;min-width:220px;
-      box-shadow:0 8px 18px rgba(0,0,0,0.25);
-      border:1px solid rgba(255,255,255,0.02);
-      transition:transform .18s ease;
+      padding:14px;border-radius:12px;min-width:240px;max-width:280px;
+      box-shadow:0 8px 18px rgba(0,0,0,0.25);border:1px solid rgba(255,255,255,0.02);
+      transition:transform .18s ease, box-shadow .18s ease;
+      display:flex;gap:12px;align-items:center;
     }
-    .carousel-card:hover{transform:translateY(-4px)}
-    .carousel-card h4{margin:0 0 6px;font-size:16px}
+    .carousel-card:hover{transform:translateY(-6px);box-shadow:0 14px 30px rgba(0,0,0,0.35)}
+    .carousel-card .icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,var(--accent),var(--accent-2))}
+    .carousel-card h4{margin:0;font-size:16px}
     .carousel-card p{margin:0;color:var(--muted);font-size:13px}
 
     /* SECTIONS */
@@ -91,7 +71,7 @@
 
     /* SEGMENTOS GRID */
     .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:12px}
-    .item{background:rgba(255,255,255,0.06);padding:18px;border-radius:12px;min-height:120px;display:flex;flex-direction:column;gap:8px;transition:transform .12s ease;cursor:pointer}
+    .item{background:rgba(255,255,255,0.06);padding:18px;border-radius:12px;min-height:120px;display:flex;flex-direction:column;gap:10px;transition:transform .12s ease;cursor:pointer}
     .item:hover{transform:translateY(-4px)}
     .item .icon{width:46px;height:46px;display:inline-flex;align-items:center;justify-content:center;border-radius:10px;background:linear-gradient(180deg,var(--accent),var(--accent-2))}
 
@@ -112,22 +92,22 @@
 
     footer{padding:20px 0;text-align:center;color:rgba(255,255,255,0.65);margin-top:30px}
 
-    /* RESPONSIVE (corrige encavalamento em telas menores) */
+    /* RESPONSIVE */
     @media (max-width:980px){
       .grid{grid-template-columns:repeat(2,1fr)}
       .insights-grid{grid-template-columns:repeat(2,1fr)}
-      .hero-title{font-size:34px}
-      .home-carousel{min-width:200px}
+      .hero-title{font-size:40px}
+      .carousel-card{min-width:220px;max-width:260px}
     }
-
-    @media (max-width:740px){
-      /* aqui empilhamos: carrossel vai para baixo do texto */
-      .hero-inner{flex-direction:column}
-      .home-carousel{order:2;width:100%;justify-content:flex-start}
-      .hero-left{order:1;width:100%}
+    @media (max-width:640px){
       .grid{grid-template-columns:1fr}
       .insights-grid{grid-template-columns:1fr}
-      .hero{padding:28px 0 18px} /* reduz um pouco em mobile */
+      .hero-title{font-size:30px}
+      .hero-lead{font-size:15px}
+      .home-carousel{justify-content:flex-start}
+      .carousel-card{width:100%;min-width:unset;max-width:unset}
+      .hero{padding:28px 0 18px}
+      .menu{display:none}
     }
   </style>
 </head>
@@ -137,7 +117,7 @@
   <header>
     <div class="inner">
       <div class="nav" role="navigation" aria-label="Menu principal">
-        <div class="brand" onclick="goHome()" style="cursor:pointer">
+        <div class="brand" onclick="goHome()" title="Voltar ao início">
           <img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Sebrae_logo.svg" alt="Sebrae">
           <span>Inteligência de Mercado</span>
         </div>
@@ -152,59 +132,55 @@
     </div>
   </header>
 
-  <!-- HERO + CAROUSEL -->
-  <section class="hero">
+  <!-- HERO -->
+  <section class="hero" aria-label="hero">
     <div class="inner hero-inner">
-      <div class="hero-left">
-        <h1 class="hero-title">Canal de Inteligência de Mercado</h1>
-        <p class="hero-lead">Insights, dados e recomendações para a Rede Sebrae e pequenos negócios — versão Beta. Foco: Bares & Restaurantes, Varejo de Moda e Minimercados.</p>
+      <h1 class="hero-title">Inteligência de Mercado</h1>
+      <p class="hero-lead">Canal digital que reúne insights, análises, tendências e oportunidades para apoiar a Rede Sebrae e os Pequenos Negócios. Foco: Bares & Restaurantes, Varejo de Moda e Minimercados.</p>
 
-        <div class="hero-ctas">
-          <a class="btn" href="#todos-insights">Ver todos os insights</a>
-          <a class="btn" href="https://opontocerto.sebrae.com.br/painel" target="_blank" style="background:transparent;border:1px solid rgba(255,255,255,0.06)">O Ponto Certo</a>
-        </div>
+      <div class="hero-ctas" role="navigation" aria-label="Ações rápidas">
+        <a class="btn" href="#todos-insights">Ver todos os insights</a>
+        <a class="btn" href="https://opontocerto.sebrae.com.br/painel" target="_blank" style="background:transparent;border:1px solid rgba(255,255,255,0.06)">O Ponto Certo</a>
       </div>
 
-      <div class="home-carousel" aria-hidden="false">
-        <!-- Card 1 -->
-        <a href="insights_bares_restaurantes.html" class="carousel-card" title="Bares e Restaurantes">
-          <div style="display:flex;gap:10px;align-items:center">
-            <div class="icon" style="width:46px;height:46px;border-radius:10px;background:linear-gradient(180deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden focusable="false"><path d="M5 3h14l-1 10a3 3 0 01-3 3h-6a3 3 0 01-3-3L5 3z" stroke="#fff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M9 21h6" stroke="#fff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+      <!-- carousel compacto abaixo do hero text -->
+      <div class="home-carousel-wrap" aria-hidden="false">
+        <div class="home-carousel" role="list">
+          <!-- Card 1 -->
+          <a href="insights_bares_restaurantes.html" class="carousel-card" title="Bares & Restaurantes">
+            <div class="icon" aria-hidden>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 3h14l-1 10a3 3 0 01-3 3h-6a3 3 0 01-3-3L5 3z" stroke="#fff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
-            <div>
+            <div style="flex:1">
               <h4 style="margin:0 0 6px">Bares & Restaurantes</h4>
               <p style="margin:0;color:var(--muted);font-size:13px">Confraternizações e digital definem o pico de dezembro.</p>
             </div>
-          </div>
-        </a>
+          </a>
 
-        <!-- Card 2 -->
-        <a href="insights_varejo_moda.html" class="carousel-card" title="Varejo de Moda">
-          <div style="display:flex;gap:10px;align-items:center">
-            <div class="icon" style="width:46px;height:46px;border-radius:10px;background:linear-gradient(180deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden focusable="false"><path d="M4 7l2-3h12l2 3v11a1 1 0 01-1 1H5a1 1 0 01-1-1V7z" stroke="#fff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <!-- Card 2 -->
+          <a href="insights_varejo_moda.html" class="carousel-card" title="Varejo de Moda">
+            <div class="icon" aria-hidden>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 7l2-3h12l2 3v11a1 1 0 01-1 1H5a1 1 0 01-1-1V7z" stroke="#fff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
-            <div>
+            <div style="flex:1">
               <h4 style="margin:0 0 6px">Varejo de Moda</h4>
               <p style="margin:0;color:var(--muted);font-size:13px">Omnichannel e redes sociais aceleram vendas.</p>
             </div>
-          </div>
-        </a>
+          </a>
 
-        <!-- Card 3 -->
-        <a href="insights_minimercados.html" class="carousel-card" title="Minimercados">
-          <div style="display:flex;gap:10px;align-items:center">
-            <div class="icon" style="width:46px;height:46px;border-radius:10px;background:linear-gradient(180deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden focusable="false"><path d="M6 6h15l-1.5 9h-12L6 6z" stroke="#fff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <!-- Card 3 -->
+          <a href="insights_minimercados.html" class="carousel-card" title="Minimercados">
+            <div class="icon" aria-hidden>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M6 6h15l-1.5 9h-12L6 6z" stroke="#fff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
-            <div>
+            <div style="flex:1">
               <h4 style="margin:0 0 6px">Minimercados</h4>
               <p style="margin:0;color:var(--muted);font-size:13px">Proximidade, apps locais e giro rápido.</p>
             </div>
-          </div>
-        </a>
+          </a>
+        </div>
       </div>
+
     </div>
   </section>
 
@@ -355,8 +331,10 @@
 
   <!-- SCRIPTS: busca/filtro + carousel autoplay + form -->
   <script>
+    // Quick nav helper
     function goHome(){ window.location.hash=''; window.scrollTo({top:0,behavior:'smooth'}); }
 
+    // Home small carousel visual tweak (autoplay opacity)
     (function(){
       const links = document.querySelectorAll('.home-carousel .carousel-card');
       let i = 0;
@@ -367,10 +345,12 @@
       }, 4500);
     })();
 
+    // Search + filter logic
     (function(){
       const searchInput = document.getElementById('searchInput');
       const chips = Array.from(document.querySelectorAll('.chip'));
       const cards = Array.from(document.querySelectorAll('.insight-card'));
+
       function applyFilter(){
         const q = (searchInput.value || '').trim().toLowerCase();
         const active = chips.find(c=>c.classList.contains('active'));
@@ -384,11 +364,17 @@
           card.style.display = (matchesQuery && matchesSeg) ? 'flex' : 'none';
         });
       }
-      chips.forEach(chip => chip.addEventListener('click', ()=>{ chips.forEach(c=>c.classList.remove('active')); chip.classList.add('active'); applyFilter(); }));
+
+      chips.forEach(chip => chip.addEventListener('click', ()=>{
+        chips.forEach(c=>c.classList.remove('active'));
+        chip.classList.add('active');
+        applyFilter();
+      }));
       searchInput.addEventListener('input', applyFilter);
       applyFilter();
     })();
 
+    // Contact form fallback (mailto)
     document.getElementById('contactForm').addEventListener('submit', function(e){
       e.preventDefault();
       const f = e.target;
