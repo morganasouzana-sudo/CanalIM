@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Inteligência de Mercado — Minimercados (Dez/2025)</title>
+
+  <!-- Fonte Unbounded -->
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#071f2a;
+      --muted:#c9d6d9;
+      --accent:#376a45;
+      --accent-2:#2f5a3b;
+      --card-bg: rgba(255,255,255,0.07);
+      --max-inner:1200px;
+      --gutter:20px;
+      --radius:14px;
+    }
+    html,body{margin:0;padding:0;height:100%;min-height:100vh;background:var(--bg);font-family:'Unbounded',system-ui,Arial,sans-serif;color:#fff;-webkit-font-smoothing:antialiased;}
+    *,*::before,*::after{box-sizing:border-box}
+    a{color:inherit}
+    .inner{max-width:var(--max-inner);margin:0 auto;padding:24px var(--gutter)}
+    header.site-header{background:var(--bg);border-bottom:1px solid rgba(255,255,255,0.03)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:800}
+    .brand img{height:30px}
+    .hero-mini{padding:28px 0 18px;border-bottom:1px solid rgba(255,255,255,0.03)}
+    .hero-title{font-size:28px;margin:0}
+    .hero-lead{color:var(--muted);margin-top:6px;font-size:14px}
+    .wrap{max-width:var(--max-inner);margin:24px auto;padding:0 var(--gutter)}
+    .card{background:var(--card-bg);padding:20px 18px;border-radius:var(--radius);margin-bottom:12px;box-shadow:0 8px 22px rgba(0,0,0,0.28);border:1px solid rgba(255,255,255,0.02)}
+    h1,h2,h3{margin:0;color:#fff}
+    p,ul,li{margin:0 0 6px 0;color:var(--muted);font-size:14px}
+    .meta{font-size:13px;color:var(--muted);margin-top:10px}
+    .carousel-wrap{padding:12px;border-radius:12px;margin-bottom:14px;border:1px solid rgba(255,255,255,0.02)}
+    .slides{position:relative;overflow:hidden;border-radius:10px}
+    .slides input{display:none}
+    .track{display:flex;width:400%;transition:transform .45s ease}
+    .panel{min-width:100%;padding:18px;box-sizing:border-box;display:flex;gap:18px;align-items:center}
+    .panel .left{flex:1}
+    .panel h3{margin:0 0 6px;font-size:18px;color:#fff}
+    .panel p{margin:0;color:var(--muted)}
+    .dots{display:flex;gap:8px;justify-content:center;padding:12px 0}
+    .dot{width:10px;height:10px;border-radius:50%;background:#26424a;cursor:pointer;border:1px solid rgba(255,255,255,0.04)}
+    #m1:checked ~ .track { transform:translateX(0%); }
+    #m2:checked ~ .track { transform:translateX(-100%); }
+    #m3:checked ~ .track { transform:translateX(-200%); }
+    #m4:checked ~ .track { transform:translateX(-300%); }
+    #m1:checked ~ .dots label[for="m1"], #m2:checked ~ .dots label[for="m2"], #m3:checked ~ .dots label[for="m3"], #m4:checked ~ .dots label[for="m4"] { background:linear-gradient(180deg,var(--accent),var(--accent-2)); box-shadow:0 6px 14px rgba(11,40,20,0.18); }
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
+    .grid .item{background:rgba(255,255,255,0.03);padding:16px;border-radius:12px;min-height:120px}
+    .sources{background:rgba(255,255,255,0.02);padding:12px;border-radius:10px;font-size:13px;color:var(--muted);margin-top:12px;border:1px solid rgba(255,255,255,0.02)}
+    footer.site-footer{padding:18px 0;text-align:center;color:rgba(255,255,255,0.6);font-size:13px;margin-top:18px}
+    @media(max-width:1000px){.grid{grid-template-columns:repeat(2,1fr)}.panel{flex-direction:column;align-items:flex-start}}
+    @media(max-width:640px){.grid{grid-template-columns:1fr}.panel{padding:12px}.hero-title{font-size:20px}}
+  </style>
+</head>
+<body>
+  <!-- header -->
+  <header class="site-header section-full" role="banner">
+    <div class="inner">
+      <div class="nav" role="navigation">
+        <div class="brand">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Sebrae_logo.svg" alt="Sebrae">
+          <span>Canal IM — Minimercados</span>
+        </div>
+        <nav class="menu">
+          <a href="https://morganasouzana-sudo.github.io/CanalIM/" target="_blank">Voltar ao site</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- hero -->
+  <section class="hero-mini section-full" role="region">
+    <div class="hero-inner inner">
+      <h1 class="hero-title">Minimercados — Dez/2025</h1>
+      <p class="hero-lead">Foco: proximidade, conveniência e digitalização leve (entrega rápida, promoções geolocalizadas, apps locais).</p>
+    </div>
+  </section>
+
+  <main class="wrap" role="main">
+    <section class="card" aria-labelledby="resumo">
+      <h2 id="resumo">Resumo rápido</h2>
+      <p>Minimercados e mercadinhos de bairro crescem pela conveniência e proximidade. A digitalização (apps de entrega, promoções por geolocalização e pagamentos rápidos) amplia o alcance e a frequência de compra.</p>
+      <div class="meta">Perspectiva local • Dados setoriais • Fontes oficiais</div>
+    </section>
+
+    <!-- carousel -->
+    <section class="carousel-wrap card" aria-label="Destaques">
+      <div class="slides" aria-live="polite">
+        <input type="radio" name="m" id="m1" checked>
+        <input type="radio" name="m" id="m2">
+        <input type="radio" name="m" id="m3">
+        <input type="radio" name="m" id="m4">
+
+        <div class="track" role="list">
+          <div class="panel" role="listitem" aria-labelledby="min1">
+            <div class="left">
+              <h3 id="min1">Proximidade = diferencial competitivo</h3>
+              <p>Clientes valorizam a conveniência de comprar perto de casa para itens de uso diário — frequência alta gera receita recorrente.</p>
+            </div>
+          </div>
+
+          <div class="panel" role="listitem" aria-labelledby="min2">
+            <div class="left">
+              <h3 id="min2">Digitalização leve em crescimento</h3>
+              <p>Uso de apps locais, WhatsApp para pedidos e integrações com entrega por aplicativo aumentam a participação de vendas digitais.</p>
+            </div>
+          </div>
+
+          <div class="panel" role="listitem" aria-labelledby="min3">
+            <div class="left">
+              <h3 id="min3">Promoções geolocalizadas</h3>
+              <p>Cupom por região, aviso de reposição e promoções rápidas impulsionam visitas e fidelização.</p>
+            </div>
+          </div>
+
+          <div class="panel" role="listitem" aria-labelledby="min4">
+            <div class="left">
+              <h3 id="min4">Logística & giro</h3>
+              <p>Gestão de giro, mix enxuto e reposição rápida são críticos para evitar ruptura e manter ticket médio.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="dots" role="tablist" aria-label="Navegação">
+          <label class="dot" for="m1" role="tab" aria-selected="true" aria-controls="min1"></label>
+          <label class="dot" for="m2" role="tab" aria-selected="false" aria-controls="min2"></label>
+          <label class="dot" for="m3" role="tab" aria-selected="false" aria-controls="min3"></label>
+          <label class="dot" for="m4" role="tab" aria-selected="false" aria-controls="min4"></label>
+        </div>
+      </div>
+    </section>
+
+    <!-- data grid -->
+    <section class="card" aria-labelledby="dados">
+      <h2 id="dados">Dados rápidos (verificados)</h2>
+
+      <div class="grid" role="list">
+        <div class="item" role="listitem">
+          <h3>Proximidade e conveniência</h3>
+          <p>Minimercados têm vantagem pela conveniência — compras de reposição e itens urgentes formam a maior parte da demanda diária.</p>
+          <div class="meta">Fonte: ABRAS / Kantar</div>
+        </div>
+
+        <div class="item" role="listitem">
+          <h3>Digitalização em expansão</h3>
+          <p>Integração com apps de entrega e uso de WhatsApp para pedidos aumentam o canal digital para pequenos pontos de venda.</p>
+          <div class="meta">Fonte: Kantar / Think With Google</div>
+        </div>
+
+        <div class="item" role="listitem">
+          <h3>Modelos de fidelização</h3>
+          <p>Programas simples (cartão de fidelidade, cupom digital) têm impacto direto na recorrência.</p>
+          <div class="meta">Fonte: ABRAS</div>
+        </div>
+
+        <div class="item" role="listitem">
+          <h3>Mix enxuto e giro rápido</h3>
+          <p>Itens de alta rotatividade e promoções por volume são determinantes para margem e fluxo.</p>
+          <div class="meta">Fonte: ABRAS</div>
+        </div>
+
+        <div class="item" role="listitem">
+          <h3>Integração com delivery</h3>
+          <p>Parcerias com apps locais e ofertas por proximidade aumentam o ticket e a frequência de pedidos digitais.</p>
+          <div class="meta">Fonte: Kantar / ABRAS</div>
+        </div>
+
+        <div class="item" role="listitem">
+          <h3>Oportunidade para MEIs</h3>
+          <p>Alta entrada de pequenos negócios e MEIs reforça demanda por soluções simples de gestão e canais digitais.</p>
+          <div class="meta">Fonte: Agência Sebrae</div>
+        </div>
+      </div>
+
+      <div class="sources" aria-label="Fontes">
+        <strong>Fontes principais:</strong>
+        <ul style="margin-top:8px">
+          <li><a href="https://abras.com.br/clipping" target="_blank" rel="noopener" style="color:var(--accent)">ABRAS — Relatórios e notícias do varejo alimentar</a></li>
+          <li><a href="https://br.kantar.com/mercado-e-consumo/" target="_blank" rel="noopener" style="color:var(--accent)">Kantar — Mercado & Consumo (pesquisas de proximidade)</a></li>
+          <li><a href="https://agenciasebrae.com.br/economia-e-politica/com-a-lideranca-dos-mei-brasil-cria-22-milhoes-de-novos-pequenos-negocios-em-2025" target="_blank" rel="noopener" style="color:var(--accent)">Agência Sebrae — Novos pequenos negócios (2025)</a></li>
+          <li><a href="https://www.thinkwithgoogle.com/intl/pt-br/insights/" target="_blank" rel="noopener" style="color:var(--accent)">Think With Google — Insights digitais</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="acoes">
+      <h2 id="acoes">Recomendações rápidas</h2>
+      <ul style="margin-top:8px;color:var(--muted)">
+        <li>Oferecer pedido simples via WhatsApp e destacar horário de funcionamento no Google Meu Negócio.</li>
+        <li>Testar promoções geolocalizadas e cupons para vizinhança.</li>
+        <li>Negociar integração rápida com apps de entrega locais (taxa x alcance).</li>
+        <li>Organizar mix por giro e priorizar reposição automática de itens essenciais.</li>
+        <li>Capacitar proprietários MEI em controles básicos (fluxo de caixa, preço, estoque).</li>
+      </ul>
+    </section>
+
+    <footer class="site-footer">
+      © Canal de Inteligência de Mercado — Sebrae • Versão Beta
+    </footer>
+  </main>
+
+  <!-- optional autoplay -->
+  <script>
+    /* autoplay opcional (comente/descomente se quiser)
+    (function(){
+      const r = ['m1','m2','m3','m4'].map(id=>document.getElementById(id));
+      let i=0;
+      setInterval(()=>{ i=(i+1)%r.length; r[i].checked=true; },6000);
+    })();
+    */
+  </script>
+</body>
+</html>
