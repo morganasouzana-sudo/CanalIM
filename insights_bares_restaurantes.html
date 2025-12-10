@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Insights — Bares e Restaurantes (Dez/2025)</title>
+<style>
+  :root{
+    --bg:#f7f7f8; --card:#ffffff; --muted:#6b7280; --accent:#0f62fe;
+    --maxw:1100px; --radius:12px; --gap:18px;
+  }
+  body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial; margin:0; background:var(--bg); color:#0b1220; -webkit-font-smoothing:antialiased;}
+  .wrap{max-width:var(--maxw); margin:28px auto; padding:20px;}
+  header{display:flex;align-items:flex-start;gap:16px;margin-bottom:18px;}
+  header h1{font-size:1.4rem;margin:0;}
+  header p{margin:6px 0 0;color:var(--muted); font-size:0.95rem;}
+  /* carousel */
+  .carousel{background:linear-gradient(180deg, #fff, #fbfdff); border-radius:var(--radius); padding:14px; box-shadow:0 6px 18px rgba(9,30,66,0.07); margin-bottom:20px;}
+  .slides{position:relative; overflow:hidden; border-radius:8px;}
+  .slides .slide{min-height:160px; padding:18px; box-sizing:border-box; display:flex; gap:18px; align-items:center;}
+  .slide h2{margin:0;font-size:1.05rem;}
+  .slide p{margin:6px 0 0;color:var(--muted);}
+  /* CSS-only carousel via radio inputs */
+  .slides input{display:none;}
+  .slides .track{display:flex; transition:transform .45s ease;}
+  .slides .panel{min-width:100%; box-sizing:border-box; padding:18px;}
+  .dots{display:flex; gap:8px; justify-content:center; padding:12px 0;}
+  .dot{width:10px;height:10px;border-radius:50%;background:#d1d5db;cursor:pointer;display:inline-block;}
+  input#s1:checked ~ .track { transform: translateX(0%); }
+  input#s2:checked ~ .track { transform: translateX(-100%); }
+  input#s3:checked ~ .track { transform: translateX(-200%); }
+  input#s4:checked ~ .track { transform: translateX(-300%); }
+  input#s1:checked ~ .dots label[for="s1"], input#s2:checked ~ .dots label[for="s2"], input#s3:checked ~ .dots label[for="s3"], input#s4:checked ~ .dots label[for="s4"] { background:var(--accent); box-shadow:0 2px 6px rgba(15,98,254,0.18); }
+
+  /* cards */
+  .cards{display:grid; grid-template-columns:repeat(3,1fr); gap:var(--gap); margin-bottom:18px;}
+  .card{background:var(--card); padding:16px; border-radius:10px; box-shadow:0 6px 14px rgba(11,17,32,0.04);}
+  .card h3{margin:0 0 8px; font-size:1rem;}
+  .card p{margin:0;color:var(--muted); font-size:0.95rem; line-height:1.35;}
+  .card .meta{margin-top:10px;font-size:0.85rem;color:#0f1724;}
+  .sources{background:#fff;padding:12px;border-radius:10px; font-size:0.88rem; color:var(--muted); box-shadow:0 2px 8px rgba(9,30,66,0.03);}
+  a.source{color:var(--accent); text-decoration:none;}
+  footer{margin-top:18px; color:var(--muted); font-size:0.85rem;}
+  /* responsive */
+  @media (max-width:880px){
+    .cards{grid-template-columns:1fr;}
+    .slide{flex-direction:column;align-items:flex-start}
+  }
+</style>
+</head>
+<body>
+  <div class="wrap" role="main">
+    <header>
+      <div>
+        <h1>Insight Rápido — Bares & Restaurantes (Dez/2025)</h1>
+        <p>Foco: sazonalidade de fim de ano e perspectiva digital (delivery, cardápio digital, reservas).</p>
+      </div>
+    </header>
+
+    <!-- CAROUSEL -->
+    <section class="carousel" aria-label="Destaques do fim de ano">
+      <div class="slides" aria-live="polite">
+        <input type="radio" name="s" id="s1" checked>
+        <input type="radio" name="s" id="s2">
+        <input type="radio" name="s" id="s3">
+        <input type="radio" name="s" id="s4">
+
+        <div class="track">
+          <div class="panel slide" aria-hidden="false">
+            <div>
+              <h2>81% esperam aumento no faturamento</h2>
+              <p>Levantamento da Abrasel (dez/2025): a maioria dos empresários do setor projeta crescimento no fim de ano, impulsionado por confraternizações.</p>
+            </div>
+          </div>
+
+          <div class="panel slide" aria-hidden="true">
+            <div>
+              <h2>26% projetam alta >10%</h2>
+              <p>Mais de 1/4 dos estabelecimentos espera um aumento significativo no movimento em comparação com o ano anterior.</p>
+            </div>
+          </div>
+
+          <div class="panel slide" aria-hidden="true">
+            <div>
+              <h2>32% planejam contratar</h2>
+              <p>Expectativa de contratação temporária ou fixa para atender ao pico de temporada.</p>
+            </div>
+          </div>
+
+          <div class="panel slide" aria-hidden="true">
+            <div>
+              <h2>Digital é padrão</h2>
+              <p>Uso de cardápios digitais, pedidos online e pagamentos por aproximação já fazem parte da jornada de consumo.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="dots" role="tablist" aria-label="Navegação do carrossel">
+          <label class="dot" for="s1" role="tab" aria-selected="true" aria-controls="slide1"></label>
+          <label class="dot" for="s2" role="tab" aria-selected="false" aria-controls="slide2"></label>
+          <label class="dot" for="s3" role="tab" aria-selected="false" aria-controls="slide3"></label>
+          <label class="dot" for="s4" role="tab" aria-selected="false" aria-controls="slide4"></label>
+        </div>
+      </div>
+    </section>
+
+    <!-- CARDS -->
+    <section class="cards" aria-label="Dados rápidos">
+      <article class="card" aria-labelledby="c1">
+        <h3 id="c1">Sazonalidade: dezembro como gatilho</h3>
+        <p>Confraternizações e pagamento do 13º impulsionam consumo fora do lar — ótima janela para ações promocionais, menus temáticos e reservas.</p>
+        <div class="meta">Fonte: Abrasel (notícia de Dez/2025)</div>
+      </article>
+
+      <article class="card" aria-labelledby="c2">
+        <h3 id="c2">Antecipação de demanda</h3>
+        <p>Outubro mostrou aumento nas vendas e mais empresas operando com lucro, indicando que a demanda pode antecipar o pico de dezembro.</p>
+        <div class="meta">Fonte: Abrasel</div>
+      </article>
+
+      <article class="card" aria-labelledby="c3">
+        <h3 id="c3">Contratações e escala</h3>
+        <p>32% dos estabelecimentos planejam contratar — necessidade de orientação em escala de operação, formação e custos.</p>
+        <div class="meta">Fonte: Abrasel</div>
+      </article>
+    </section>
+
+    <section class="sources" aria-label="Fontes">
+      <strong>Fontes principais (consulta rápida):</strong>
+      <ul>
+        <li><a class="source" href="https://abrasel.com.br/noticias/noticias/confraternizacoes-de-fim-de-ano-aquecem-movimento-em-bares-e-restaurantes/" target="_blank" rel="noopener">Abrasel — Confraternizações de fim de ano aquecem movimento</a></li>
+        <li><a class="source" href="https://agenciasebrae.com.br/economia-e-politica/com-a-lideranca-dos-mei-brasil-cria-22-milhoes-de-novos-pequenos-negocios-em-2025" target="_blank" rel="noopener">Agência Sebrae — Novos pequenos negócios (2025)</a></li>
+        <li><a class="source" href="https://www.thinkwithgoogle.com/intl/pt-br/insights/" target="_blank" rel="noopener">Think With Google — Insights digitais</a></li>
+      </ul>
+    </section>
+
+    <footer>
+      Dica: se for colocar dentro do Google Sites, hospede esse HTML e incorpore por iframe para manter a totalidade do estilo.
+    </footer>
+  </div>
+</body>
+</html>
