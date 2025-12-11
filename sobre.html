@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Sobre — Canal de Inteligência de Mercado</title>
+  <title>Sobre a Metodologia — Canal de Inteligência de Mercado</title>
   <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
-    /* Mesmo CSS Base */
-    :root{ --bg:#0f3336; --card-bg:rgba(255,255,255,0.04); --text:#ffffff; --muted:#bfcfce; --accent:#3f7a57; --border:rgba(255,255,255,0.06); --radius:14px; }
+    /* CSS Base (Mantido do seu padrão) */
+    :root{ --bg:#0f3336; --card-bg:rgba(255,255,255,0.04); --text:#ffffff; --muted:#bfcfce; --accent:#3f7a57; --accent-2:#2f5f46; --border:rgba(255,255,255,0.06); --radius:14px; }
     html,body{ margin:0; padding:0; background:var(--bg); color:var(--text); font-family:'Inter',sans-serif; line-height:1.6; min-height:100vh; display:flex; flex-direction:column;}
-    h1,h2,.brand{ font-family:'Unbounded',sans-serif; }
+    h1,h2,h3,.brand{ font-family:'Unbounded',sans-serif; }
     .inner{ max-width:1200px; margin:0 auto; padding:0 20px; width:100%; }
     
     header{ background:rgba(15,51,54,0.95); border-bottom:1px solid var(--border); position:sticky; top:0; z-index:40; }
@@ -19,17 +19,59 @@
     .menu a{ color:var(--muted); text-decoration:none; }
     .menu a:hover{ color:#fff; }
 
-    .about-hero{ padding:80px 0; text-align:center; max-width:800px; margin:0 auto; }
-    .about-hero h1{ font-size:48px; margin-bottom:24px; background:linear-gradient(to right, #fff, #bfcfce); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-    .grid-values{ display:grid; grid-template-columns:repeat(3, 1fr); gap:24px; margin-bottom:80px; }
-    .value-card{ background:var(--card-bg); padding:32px; border-radius:var(--radius); border:1px solid var(--border); text-align:center; }
-    .value-icon{ font-size:32px; margin-bottom:16px; display:block; }
+    /* Hero da Página Sobre */
+    .about-hero{ padding:80px 0 60px; text-align:center; max-width:900px; margin:0 auto; }
+    .about-hero h1{ font-size:42px; margin-bottom:24px; background:linear-gradient(to right, #fff, #bfcfce); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+    .about-hero p { font-size: 18px; color: var(--muted); line-height: 1.8; }
 
+    /* Seção: Nossa Abordagem (Baseada no Modelo Operacional) */
+    .methodology-section { margin-bottom: 80px; }
+    .method-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    
+    .method-text h2 { color: #fff; margin-bottom: 24px; font-size: 28px; }
+    .method-text p { color: var(--muted); margin-bottom: 20px; font-size: 15px; }
+    
+    /* Visual das Camadas (Layers do PDF) */
+    .layers-visual { display: flex; flex-direction: column; gap: 16px; }
+    .layer-card { 
+      background: linear-gradient(90deg, var(--card-bg) 0%, rgba(63,122,87,0.05) 100%);
+      border: 1px solid var(--border);
+      padding: 24px;
+      border-radius: 16px;
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+    .layer-card:hover { transform: translateX(10px); border-color: var(--accent); background: linear-gradient(90deg, var(--card-bg) 0%, rgba(63,122,87,0.15) 100%); }
+    
+    .layer-icon { 
+      font-size: 24px; 
+      background: rgba(255,255,255,0.05); 
+      width: 48px; height: 48px; 
+      display: flex; align-items: center; justify-content: center; 
+      border-radius: 10px; 
+      color: #4fd17c;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .layer-content h3 { font-size: 18px; margin: 0 0 6px; color: #fff; }
+    .layer-content span { font-size: 14px; color: var(--muted); display: block; line-height: 1.5; }
+
+    /* Grid de Pilares (Baseado na Proposta FIA) */
+    .pillars-title { text-align: center; margin-bottom: 40px; font-size: 24px; }
+    .grid-values{ display:grid; grid-template-columns:repeat(3, 1fr); gap:24px; margin-bottom:80px; }
+    .value-card{ background:var(--card-bg); padding:32px; border-radius:var(--radius); border:1px solid var(--border); text-align:left; transition: transform 0.3s; }
+    .value-card:hover { transform: translateY(-5px); border-color: var(--accent); }
+    .value-icon{ font-size:28px; margin-bottom:20px; display:inline-block; background: rgba(63,122,87,0.2); padding: 10px; border-radius: 8px; }
+    .value-card h3 { font-size: 18px; margin-bottom: 12px; }
+
+    /* Footer */
     footer{ border-top:1px solid var(--border); padding:40px 0; margin-top:auto; font-size:13px; color:var(--muted); }
     .footer-links{ display:flex; gap:24px; }
     .footer-links a{ color:var(--muted); text-decoration:none; }
 
-    @media(max-width:768px){ .grid-values{ grid-template-columns:1fr; } .about-hero h1{ font-size:32px; } }
+    @media(max-width:900px){ .grid-values, .method-grid{ grid-template-columns:1fr; } .about-hero h1{ font-size:32px; } }
   </style>
 </head>
 <body>
@@ -49,25 +91,79 @@
 
   <main class="inner">
     <div class="about-hero">
-      <h1>Dados que movem o empreendedorismo.</h1>
-      <p style="font-size:18px; color:var(--muted);">O Canal de Inteligência de Mercado é uma iniciativa para democratizar o acesso a dados estratégicos, ajudando pequenos negócios a tomarem decisões mais rápidas e assertivas.</p>
+      <div style="display:inline-block; background:rgba(63,122,87,0.2); color:#4fd17c; font-size:11px; font-weight:700; padding:6px 16px; border-radius:100px; margin-bottom:24px; border:1px solid rgba(63,122,87,0.3); text-transform: uppercase;">Modelo Operacional Beta</div>
+      <h1>Inteligência acionável baseada em evidências.</h1>
+      <p>O Canal de Inteligência de Mercado não é apenas um portal de notícias. É um sistema estruturado para transformar dados dispersos em decisões estratégicas para o pequeno negócio.</p>
     </div>
 
+    <!-- SEÇÃO: NOSSA METODOLOGIA (O Coração do Modelo) -->
+    <div class="methodology-section">
+      <div class="method-grid">
+        <div class="method-text">
+          <h2>Como construímos a inteligência</h2>
+          <p>Nossa modelagem analítica é inspirada nos <strong>Fatores-Chave de Sucesso (FCS)</strong>, integrando dados internos do Sebrae com indicadores de mercado para gerar recomendações precisas.</p>
+          
+          <p>O processo opera em camadas contínuas de tratamento e análise, garantindo que a informação que chega à ponta seja:</p>
+          <ul style="color:var(--muted); font-size:15px; margin-bottom:30px; padding-left:20px;">
+            <li style="margin-bottom:8px;"><strong>Territorializada:</strong> Respeita as especificidades da sua região.</li>
+            <li style="margin-bottom:8px;"><strong>Setorial:</strong> Focada nas dores reais do seu segmento.</li>
+            <li style="margin-bottom:8px;"><strong>Acionável:</strong> Menos teoria, mais prática.</li>
+          </ul>
+          
+          <div style="margin-top: 30px; padding: 24px; background: rgba(0,0,0,0.2); border-radius: 12px; border-left: 4px solid var(--accent);">
+            <strong style="color: #fff; display:block; margin-bottom:8px; font-size:14px;">VISÃO DE FUTURO</strong>
+            <span style="font-size: 14px; color: var(--muted); line-height:1.5;">Estamos evoluindo para um modelo preditivo, que utilizará Inteligência Artificial e <em>Sentimetria Digital</em> para antecipar tendências de consumo a partir de reviews e redes sociais.</span>
+          </div>
+        </div>
+
+        <div class="layers-visual">
+          <!-- Camada 1: Coleta -->
+          <div class="layer-card">
+            <div class="layer-icon">📊</div>
+            <div class="layer-content">
+              <h3>1. Coleta e Integração</h3>
+              <span>Cruzamento de bases públicas (IBGE, Receita), dados de atendimento do Sebrae e monitoramento digital de mercado.</span>
+            </div>
+          </div>
+
+          <!-- Camada 2: Modelagem -->
+          <div class="layer-card">
+            <div class="layer-icon">🧠</div>
+            <div class="layer-content">
+              <h3>2. Modelagem Analítica</h3>
+              <span>Aplicação de métodos estatísticos e análise de FCS para identificar padrões de sucesso e riscos por perfil empresarial.</span>
+            </div>
+          </div>
+
+          <!-- Camada 3: Entrega -->
+          <div class="layer-card">
+            <div class="layer-icon">🚀</div>
+            <div class="layer-content">
+              <h3>3. Inteligência Aplicada</h3>
+              <span>Tradução dos dados em produtos claros: Oportunidades, Alertas de Curto Prazo e Trilhas de Recomendação.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEÇÃO: PILARES ESTRATÉGICOS -->
+    <h2 class="pillars-title">Pilares da Operação</h2>
     <div class="grid-values">
       <div class="value-card">
-        <span class="value-icon">🚀</span>
-        <h3>Agilidade</h3>
-        <p style="font-size:14px; color:var(--muted)">Boletins curtos e direto ao ponto, respeitando o tempo do empreendedor.</p>
+        <span class="value-icon">🎯</span>
+        <h3>Centralidade no Negócio</h3>
+        <p style="font-size:14px; color:var(--muted)">Toda análise parte da realidade concreta do pequeno negócio, não de modelos teóricos abstratos.</p>
       </div>
       <div class="value-card">
         <span class="value-icon">🔍</span>
-        <h3>Curadoria</h3>
-        <p style="font-size:14px; color:var(--muted)">Selecionamos apenas o que é relevante nas principais fontes do mercado (Abrasel, Kantar, Google).</p>
+        <h3>Transparência Analítica</h3>
+        <p style="font-size:14px; color:var(--muted)">Nossos critérios de recomendação são rastreáveis e baseados em evidências, garantindo segurança na decisão.</p>
       </div>
       <div class="value-card">
-        <span class="value-icon">💡</span>
-        <h3>Ação</h3>
-        <p style="font-size:14px; color:var(--muted)">Focamos em insights acionáveis: o que fazer com essa informação agora?</p>
+        <span class="value-icon">🤝</span>
+        <h3>Rede Colaborativa</h3>
+        <p style="font-size:14px; color:var(--muted)">Construção conjunta com Unidades da Federação para garantir que a inteligência chegue a todo o território nacional.</p>
       </div>
     </div>
   </main>
