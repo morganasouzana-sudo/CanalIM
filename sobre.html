@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sobre — Canal de Inteligência de Mercado</title>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* Mesmo CSS Base */
+    :root{ --bg:#0f3336; --card-bg:rgba(255,255,255,0.04); --text:#ffffff; --muted:#bfcfce; --accent:#3f7a57; --border:rgba(255,255,255,0.06); --radius:14px; }
+    html,body{ margin:0; padding:0; background:var(--bg); color:var(--text); font-family:'Inter',sans-serif; line-height:1.6; min-height:100vh; display:flex; flex-direction:column;}
+    h1,h2,.brand{ font-family:'Unbounded',sans-serif; }
+    .inner{ max-width:1200px; margin:0 auto; padding:0 20px; width:100%; }
+    
+    header{ background:rgba(15,51,54,0.95); border-bottom:1px solid var(--border); position:sticky; top:0; z-index:40; }
+    .nav{ display:flex; align-items:center; justify-content:space-between; height:70px; }
+    .brand img{ height:40px; }
+    .menu{ display:flex; gap:20px; font-size:13px; font-weight:600; }
+    .menu a{ color:var(--muted); text-decoration:none; }
+    .menu a:hover{ color:#fff; }
+
+    .about-hero{ padding:80px 0; text-align:center; max-width:800px; margin:0 auto; }
+    .about-hero h1{ font-size:48px; margin-bottom:24px; background:linear-gradient(to right, #fff, #bfcfce); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+    .grid-values{ display:grid; grid-template-columns:repeat(3, 1fr); gap:24px; margin-bottom:80px; }
+    .value-card{ background:var(--card-bg); padding:32px; border-radius:var(--radius); border:1px solid var(--border); text-align:center; }
+    .value-icon{ font-size:32px; margin-bottom:16px; display:block; }
+
+    footer{ border-top:1px solid var(--border); padding:40px 0; margin-top:auto; font-size:13px; color:var(--muted); }
+    .footer-links{ display:flex; gap:24px; }
+    .footer-links a{ color:var(--muted); text-decoration:none; }
+
+    @media(max-width:768px){ .grid-values{ grid-template-columns:1fr; } .about-hero h1{ font-size:32px; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="inner">
+      <div class="nav">
+        <a href="index.html" class="brand"><img src="./assets/logo-movemais.svg" alt="Sebrae"></a>
+        <nav class="menu">
+          <a href="index.html">Home</a>
+          <a href="sobre.html" style="color:#fff">Sobre</a>
+          <a href="index.html#todos-insights">Insights</a>
+          <a href="contato.html">Contato</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="inner">
+    <div class="about-hero">
+      <h1>Dados que movem o empreendedorismo.</h1>
+      <p style="font-size:18px; color:var(--muted);">O Canal de Inteligência de Mercado é uma iniciativa para democratizar o acesso a dados estratégicos, ajudando pequenos negócios a tomarem decisões mais rápidas e assertivas.</p>
+    </div>
+
+    <div class="grid-values">
+      <div class="value-card">
+        <span class="value-icon">🚀</span>
+        <h3>Agilidade</h3>
+        <p style="font-size:14px; color:var(--muted)">Boletins curtos e direto ao ponto, respeitando o tempo do empreendedor.</p>
+      </div>
+      <div class="value-card">
+        <span class="value-icon">🔍</span>
+        <h3>Curadoria</h3>
+        <p style="font-size:14px; color:var(--muted)">Selecionamos apenas o que é relevante nas principais fontes do mercado (Abrasel, Kantar, Google).</p>
+      </div>
+      <div class="value-card">
+        <span class="value-icon">💡</span>
+        <h3>Ação</h3>
+        <p style="font-size:14px; color:var(--muted)">Focamos em insights acionáveis: o que fazer com essa informação agora?</p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="inner" style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:20px;">
+      <div>© 2025 Sebrae • Versão Beta</div>
+      <div class="footer-links">
+        <a href="politica_privacidade.html">Política de Privacidade</a>
+        <a href="termos_uso.html">Termos de Uso</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
