@@ -56,18 +56,16 @@
        BOTÃO VOLTAR (fixo topo-esquerdo)
        =========================== */
 .back-btn {
-  position: fixed;
+  position: fixed;   /* mantém sempre visível */
+  top: 12px;         /* distância do topo */
+  left: 12px;        /* distância da esquerda */
   z-index: 9999;
   background: rgba(255,255,255,0.04);
   border: 1px solid rgba(255,255,255,0.06);
   color: #fff;
   padding: 8px 12px;
   border-radius: 10px;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
   font-weight: 600;
-  backdrop-filter: blur(4px);
 }
 
     .back-btn:hover { transform:translateY(-1px); }
@@ -406,7 +404,7 @@
 
       <!-- Texto sobre a faixa (bottom-left) -->
       <div class="hero-content">
-        <h1 class="hero-title">Bares &amp; Restaurantes — Dez/2025</h1>
+        <h1 class="hero-title">Bares &amp; Restaurantes - Dez/2025</h1>
         <p class="hero-lead">Confraternizações de fim de ano aquecem movimento; digitalização (delivery e redes sociais) é decisiva para captura de demanda.</p>
       </div>
     </div>
@@ -560,75 +558,6 @@
     })();
     */
   </script>
-  <script>
-(function() {
-  const btn = document.querySelector('.back-btn');
-  const header = document.querySelector('.site-header');
-  const brand = header ? header.querySelector('.brand') : null;
-
-  if (!btn || !header) return;
-
-  // ajustes finos
-  const GAP_TOP = 10;       // espaço entre header e botão
-  const GAP_LEFT = 12;      // espaço ao lado do brand
-  const MIN_LEFT = 12;      // margem mínima à esquerda
-
-  function positionBackButton() {
-
-    const headerRect = header.getBoundingClientRect();
-    const brandRect = brand ? brand.getBoundingClientRect() : null;
-
-    // *** POSIÇÃO VERTICAL ***
-    // coloca o botão logo abaixo do header
-    const desiredTop = headerRect.bottom + GAP_TOP;
-    btn.style.top = Math.max(desiredTop, 10) + 'px';
-
-    // *** POSIÇÃO HORIZONTAL ***
-    let left = MIN_LEFT;
-
-    if (brandRect) {
-      // posição após o brand + gap
-      const afterBrand = Math.round(brandRect.right + GAP_LEFT);
-      // Se o button ficaria por cima do brand, empurrar para a direita
-      if (afterBrand > left) {
-        left = afterBrand;
-      }
-    }
-
-    // evitar que saia da tela em telas pequenas
-    const maxLeft = window.innerWidth - btn.offsetWidth - 12;
-    left = Math.min(left, maxLeft);
-
-    btn.style.left = left + 'px';
-  }
-
-  // debounce no resize
-  let resizeTimer = null;
-  function onResize() {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(positionBackButton, 80);
-  }
-
-  // observar mudanças no header
-  const obs = new MutationObserver(positionBackButton);
-  obs.observe(header, { childList: true, subtree: true, attributes: true });
-
-  // eventos
-  window.addEventListener('load', positionBackButton);
-  window.addEventListener('resize', onResize);
-
-  // clique no botão voltar
-  btn.addEventListener('click', function(e){
-    e.preventDefault();
-    if (window.history.length > 1) {
-      window.history.back();
-    } else {
-      window.location.href = '/';
-    }
-  });
-
-})();
-</script>
 
 </body>
 </html>
