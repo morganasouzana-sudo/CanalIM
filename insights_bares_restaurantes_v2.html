@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Bares & Restaurantes — Insight | Canal IM</title>
+
+<meta name="description" content="Confraternizações de fim de ano aquecem movimento; digital é decisivo. Recomendações para bares e restaurantes.">
+<link rel="canonical" href="https://seu-site-exemplo.com/insights_bares_restaurantes.html">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  /* palette alinhada com index.html */
+  :root{
+    --bg:#0f3336;
+    --muted:#bfcfce;
+    --accent:#3f7a57;
+    --accent-2:#2f5f46;
+    --card-bg: rgba(255,255,255,0.04);
+    --max-inner:1100px;
+    --radius:12px;
+  }
+
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0;padding:0;background:var(--bg);color:#fff;font-family:'Unbounded',system-ui,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  .inner{max-width:var(--max-inner);margin:0 auto;padding:20px}
+
+  /* Top bar: mantém botão voltar + rótulo topo direito */
+  .topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}
+  .back{color:var(--muted);text-decoration:none;font-weight:700;display:inline-flex;align-items:center;gap:8px}
+  .top-label{color:var(--muted);font-weight:700;font-size:14px}
+
+  /* card base (mantive estrutura/typography original) */
+  .card{background:var(--card-bg);padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);color:#e6f0ef}
+
+  h1{margin:0 0 8px;font-size:28px}
+  .meta{color:var(--muted);font-size:14px;margin-bottom:12px}
+
+  /* hero: imagem como fundo com overlay (garante leitura) - ocupa largura total da inner */
+  .hero {
+    position:relative;
+    border-radius:12px;
+    overflow:hidden;
+    height:320px;
+    margin-bottom:16px;
+    border:1px solid rgba(255,255,255,0.03);
+    background: #111 center/cover no-repeat;
+  }
+  .hero .bg{
+    position:absolute;inset:0;object-fit:cover;width:100%;height:100%;display:block;
+  }
+  .hero .overlay{
+    position:absolute;inset:0;background:linear-gradient(180deg, rgba(15,51,54,0.45), rgba(6,30,31,0.75));pointer-events:none;
+  }
+  /* texto hero posicionado, com boa leitura (substitui sobrepor texto diretamente na imagem) */
+  .hero-content{
+    position:relative; z-index:2; padding:22px; display:flex; flex-direction:column; justify-content:flex-end; height:100%;
+    color:#fff;
+  }
+  .hero-title{font-size:28px;margin:0 0 8px;line-height:1.02}
+  .hero-lead{margin:0;color:var(--muted);font-size:14px}
+
+  /* small layout for the page body - keeps original single-column feel but adds images */
+  main{display:grid;grid-template-columns:1fr;gap:12px}
+  .section{padding:12px 0}
+
+  /* inserted images inline with captions — never behind text */
+  .inline-images{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:12px}
+  .img-block{background:#0b2a2b;border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,0.03);position:relative;height:180px}
+  .img-block img{width:100%;height:100%;object-fit:cover;display:block}
+  .img-caption{position:absolute;left:10px;bottom:10px;background:linear-gradient(180deg,var(--accent),var(--accent-2));padding:6px 10px;border-radius:8px;font-weight:700;font-size:13px;color:#fff;opacity:0.95}
+
+  /* recommendations list kept as original styling but with better spacing */
+  ul{margin:8px 0 0 20px;color:#e6f0ef}
+  li{margin-bottom:8px;line-height:1.45}
+
+  /* sources and small print */
+  .sources{margin-top:12px;color:var(--muted);font-size:13px}
+
+  /* responsive tweaks */
+  @media (max-width:720px){
+    .hero{height:220px}
+    .img-block{height:140px}
+    .hero-title{font-size:20px}
+  }
+</style>
+</head>
+<body>
+  <div class="inner">
+
+    <!-- topbar: voltar + label -->
+    <div class="topbar" role="navigation" aria-label="Navegação do insight">
+      <a class="back" href="index.html" aria-label="Voltar para a página inicial">← Voltar</a>
+      <div class="top-label">Bares &amp; Restaurantes • Dez/2025</div>
+    </div>
+
+    <!-- HERO: imagem como fundo (substitua filename pelos que existem em assets/) -->
+    <section class="hero" role="img" aria-label="Ambiente de bar e restaurante"
+             style="background-image:url('./assets/mulher_sentada_cafeteria.webp')">
+      <img class="bg" src="./assets/mulher_sentada_cafeteria.webp" alt="" onerror="this.style.display='none'">
+      <div class="overlay" aria-hidden="true"></div>
+      <div class="hero-content">
+        <h1 class="hero-title">Bares &amp; Restaurantes — Dez/2025</h1>
+        <p class="hero-lead">Confraternizações de fim de ano aquecem movimento; digitalização (delivery e redes sociais) é decisiva para captura de demanda.</p>
+      </div>
+    </section>
+
+    <!-- main content: mantive seu texto original (sem alterações de conteúdo) -->
+    <main>
+
+      <article class="card section" role="article" aria-labelledby="title-insight">
+        <h1 id="title-insight">Bares &amp; Restaurantes — Dez/2025</h1>
+        <div class="meta">Tags: Sazonalidade · Delivery · Digital</div>
+
+        <p>Resumo rápido: confraternizações de fim de ano aquecem movimento, sobretudo em dezembro — digitalização (delivery e redes sociais) é decisiva para captura de demanda. (Fonte: Abrasel)</p>
+
+        <h3 style="margin-top:14px">Dados e recomendações</h3>
+        <ul>
+          <li>Preparar cardápios e estoques para pico sazonal (dezembro).</li>
+          <li>Promover ofertas para grupos e confraternizações em redes e delivery.</li>
+          <li>Integrar atendimento por WhatsApp + app de entregas.</li>
+        </ul>
+
+        <h3 style="margin-top:14px">Fontes</h3>
+        <ul>
+          <li><a href="https://abrasel.com.br/noticias/noticias/confraternizacoes-de-fim-de-ano-aquecem-movimento-em-bares-e-restaurantes/" target="_blank" rel="noopener" style="color:var(--muted)">Abrasel — notícia</a></li>
+        </ul>
+      </article>
+
+      <!-- IMAGENS INSERIDAS: ao longo da página, com legendas; não cobrem texto -->
+      <section class="section">
+        <div style="font-weight:800;margin-bottom:8px">Imagens relacionadas</div>
+
+        <div class="inline-images" aria-label="Imagens relacionadas a bares e restaurantes">
+          <div class="img-block" role="img" aria-label="Interior de bar com clientes">
+            <img src="./assets/bar_interior.webp" alt="Interior de bar" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <div class="img-caption">Ambiente — movimento</div>
+          </div>
+
+          <div class="img-block" role="img" aria-label="Pessoas brindando">
+            <img src="./assets/pessoas_brindando.webp" alt="Pessoas brindando" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <div class="img-caption">Confraternizações</div>
+          </div>
+
+          <div class="img-block" role="img" aria-label="Entrega por aplicativo">
+            <img src="./assets/delivery_pedido.webp" alt="Entrega por aplicativo" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <div class="img-caption">Delivery &amp; Apps</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- opcional: espaço para anexar dados adicionais (mantive simples) -->
+      <section class="card section">
+        <h3 style="margin:0 0 8px">Observações</h3>
+        <p class="muted" style="margin:0">Recomenda-se mapear parceiros de entrega regionais e verificar capacidade de estoque para operação em datas de pico.</p>
+      </section>
+
+    </main>
+
+  </div>
+
+<script>
+  // small helper: hide image containers when image 404s (keeps layout limpo)
+  document.querySelectorAll('.img-block img').forEach(img=>{
+    img.addEventListener('error', function(){ const b = this.closest('.img-block'); if(b) b.style.display='none'; });
+  });
+</script>
+</body>
+</html>
