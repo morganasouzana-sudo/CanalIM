@@ -391,12 +391,17 @@
 }
 
 .page-title-header {
-  font-weight: 800;
-  font-size: 20px;
-  color: #ffffff;
-  margin-left: auto;               /* garante alinhamento à direita */
-  white-space: nowrap;             /* impede quebra estranha */
+  position: relative;
+  font-weight:800;
+  font-size:20px;
+  color:var(--text);
+  white-space:nowrap;
+  display:inline-block;
+
+  transform: translateY(6px); /* já existia */
+  margin-left: 12px;          /* NOVO — ajusta a posição para a direita */
 }
+
 
 </style>
 
