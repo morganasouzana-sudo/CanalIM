@@ -4,173 +4,124 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Canal de Inteligência de Mercado — Sebrae (Beta)</title>
-
-  <!-- Fonte Unbounded -->
-  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <meta name="description" content="Canal digital que reúne insights, análises e recomendações para apoiar a Rede Sebrae e os Pequenos Negócios.">
+  
+  <!-- Fontes (Mesmas das páginas internas) -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
+    /* --- CSS SYSTEM (Mesmo das páginas internas) --- */
     :root{
       --bg:#0f3336;
-      --muted:#bfcfce;
-      --accent:#3f7a57;
-      --accent-2:#2f5f46;
       --card-bg: rgba(255,255,255,0.04);
-      --max-inner:1100px;
-      --gutter:18px;
-      --radius:12px;
-      --glass: rgba(255,255,255,0.02);
+      --text: #ffffff;
+      --muted: #bfcfce;
+      --accent: #3f7a57;
+      --accent-2: #2f5f46;
+      --accent-hover: #2f5f46;
+      --border: rgba(255,255,255,0.06);
+      --gutter: 20px;
+      --max-inner: 1200px;
+      --radius: 14px;
     }
 
-    /* BASE */
-    html,body{
-      margin:0;padding:0;height:100%;min-height:100vh;
-      background:var(--bg);
-      font-family:'Unbounded',system-ui,Arial,sans-serif;
-      color:#fff;-webkit-font-smoothing:antialiased;
-    }
-    .inner{max-width:var(--max-inner);margin:0 auto;padding:18px var(--gutter);}
-    a{color:inherit;text-decoration:none}
-    img{max-width:100%;height:auto;display:block}
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:'Inter', sans-serif;line-height:1.6}
+    
+    /* Unbounded para títulos */
+    h1, h2, h3, .page-title-header, .btn, .chip, .brand { font-family: 'Unbounded', sans-serif; }
 
-    /* HEADER */
-    header{
-      background:var(--bg);
-      border-bottom:1px solid rgba(255,255,255,0.03);
-      position:sticky;top:0;z-index:120;
-    }
-    .nav{
-      display:flex;align-items:center;justify-content:space-between;
-      padding:10px 0;
-    }
-    .brand{
-      display:flex;align-items:center;gap:10px;font-weight:800;
-      font-size:18px;cursor:pointer;
-    }
-    .brand img{height:30px}
-    .brand span{font-weight:800;font-size:18px}
+    a{color:inherit;text-decoration:none;transition:0.2s}
+    a:hover{color:var(--accent)}
+    
+    .inner{max-width:var(--max-inner);margin:0 auto;padding:0 var(--gutter)}
 
-    .menu{display:flex;gap:10px}
-    .menu a{
-      font-size:14px;padding:6px 8px;border-radius:8px;
-      cursor:pointer;color:rgba(255,255,255,0.9);
-    }
-    .menu a:hover{background:rgba(255,255,255,0.06)}
+    /* HEADER (Estilo Home - Logo Central) */
+    header{background:rgba(15, 51, 54, 0.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:40}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0;height:70px;position:relative}
+    
+    .page-title-header {font-weight: 800; font-size: 18px; color: var(--text); letter-spacing: -0.5px;}
+    
+    .brand { position: absolute; left: 50%; transform: translateX(-50%); display: flex; align-items: center; }
+    .brand img { height: 32px; background: rgba(255,255,255,0.9); padding: 4px; border-radius: 4px; transition: transform 0.3s ease; }
+    .brand:hover img { transform: scale(1.05); }
 
-    /* HERO */
-    .hero{
-      position:relative;
-      padding:28px 0 12px;
-      overflow:hidden;
-      border-bottom:1px solid rgba(255,255,255,0.05);
-      color:#fff;
-    }
+    .menu { display:flex; gap:20px; font-size:13px; font-weight:600; font-family: 'Inter', sans-serif; }
+    .menu a:hover { color: #fff; text-decoration: underline; text-underline-offset: 4px; }
 
-    /* background image (hero) */
-    .hero-bg{
-      position:absolute;
-      inset:0;
-      background-image: url('./assets/hero-minimercado.webp');
-      background-size:cover;
-      background-position:center;
-      /* imagem mais escura para melhorar contraste */
-      filter: saturate(0.95) contrast(0.97) brightness(0.60);
-      z-index:0;
-      will-change:transform,opacity;
-    }
+    /* HERO GRID */
+    .hero { padding: 60px 0 40px; border-bottom: 1px solid var(--border); position: relative; overflow: hidden; }
+    .hero-grid { display:grid; grid-template-columns: 1fr 500px; gap:60px; align-items:center; }
 
-    /* overlay: unifica tom e reforça legibilidade */
-    .hero::after{
-      content:'';
-      position:absolute;inset:0;
-      background: linear-gradient(180deg, rgba(6,30,31,0.70), rgba(6,30,31,0.70));
-      z-index:1;
-    }
+    .hero-panel { position: relative; z-index: 2; }
+    .hero-title { font-size: clamp(40px, 5vw, 64px); line-height: 1.05; margin: 0 0 24px; font-weight: 800; background: linear-gradient(to right, #fff, #bfcfce); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero-lead { font-size: 18px; color: var(--muted); margin-bottom: 32px; max-width: 600px; }
+    
+    .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn { display: inline-flex; align-items: center; padding: 12px 24px; border-radius: 8px; font-weight: 700; font-size: 14px; cursor: pointer; transition: all 0.2s; border: 1px solid transparent; }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(63, 122, 87, 0.4); }
+    .btn-outline { background: transparent; border-color: rgba(255,255,255,0.2); color: #fff; }
+    .btn-outline:hover { border-color: #fff; background: rgba(255,255,255,0.05); }
 
-    .hero-inner{position:relative;z-index:2;display:block;text-align:center;padding-top:10px;padding-bottom:10px}
+    /* IMAGE COLUMNS (Animation) */
+    .image-columns { display:flex; gap:16px; height: 500px; overflow: hidden; mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent); -webkit-mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent); }
+    .col { width: 50%; display: flex; flex-direction: column; gap: 16px; }
+    
+    .tile { border-radius: 12px; overflow: hidden; position: relative; height: 280px; flex-shrink: 0; border: 1px solid var(--border); background: #000; transition: transform 0.3s; }
+    .tile img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; transition: opacity 0.3s; }
+    .tile:hover img { opacity: 1; transform: scale(1.05); }
+    .pill { position: absolute; bottom: 12px; left: 12px; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); color: #fff; padding: 4px 10px; border-radius: 4px; font-size: 11px; font-weight: 700; text-transform: uppercase; border: 1px solid rgba(255,255,255,0.2); }
 
-    /* PANEL (Opção B) - título + lead dentro de um painel semitransparente */
-    .hero-panel{
-      display:inline-block;
-      max-width:920px;
-      background: rgba(6,30,31,0.36); /* controlar opacidade aqui */
-      padding:22px 26px;
-      border-radius:14px;
-      box-shadow: 0 14px 40px rgba(0,0,0,0.45);
-      border: 1px solid rgba(255,255,255,0.03);
-      text-align:center;
-      margin: 0 auto 12px auto;
-      position:relative;
-      z-index:3;
-    }
+    @keyframes scrollUp { 0% { transform: translateY(0); } 100% { transform: translateY(-50%); } }
+    .stack.animated { animation: scrollUp 40s linear infinite; }
+    .col-2 .stack.animated { animation-direction: reverse; animation-duration: 45s; }
 
-    .hero-title{
-      font-size:56px;margin:0;line-height:1.02;font-weight:800;
-      text-shadow: 0 10px 26px rgba(0,0,0,0.6);
-    }
+    /* CONTROLS */
+    .controls-section { padding: 20px 0; border-bottom: 1px solid var(--border); background: rgba(0,0,0,0.2); }
+    .controls { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
+    
+    .search-wrap { position: relative; flex: 1; max-width: 400px; }
+    .search-wrap input { width: 100%; background: rgba(255,255,255,0.05); border: 1px solid var(--border); padding: 10px 16px; border-radius: 8px; color: #fff; font-family: 'Inter', sans-serif; font-size: 14px; }
+    .search-wrap input:focus { outline: none; border-color: var(--accent); background: rgba(255,255,255,0.08); }
+    
+    .chips { display: flex; gap: 8px; }
+    .chip { padding: 8px 16px; border-radius: 100px; background: rgba(255,255,255,0.05); color: var(--muted); font-size: 12px; font-weight: 600; cursor: pointer; border: 1px solid transparent; transition: all 0.2s; }
+    .chip:hover { background: rgba(255,255,255,0.1); color: #fff; }
+    .chip.active { background: var(--accent); color: #fff; border-color: var(--accent-2); }
 
-    .hero-lead{
-      margin-top:10px;color:var(--muted);max-width:760px;margin-left:auto;margin-right:auto;
-      font-size:15px;line-height:1.45;
-      text-shadow: 0 4px 14px rgba(0,0,0,0.35);
-    }
+    /* CARDS & GRID */
+    .section-title { font-size: 24px; margin-bottom: 24px; display: flex; align-items: center; gap: 12px; }
+    .section-title::before { content: ''; width: 6px; height: 24px; background: var(--accent); border-radius: 2px; display: block; }
 
-    .hero-ctas{display:flex;gap:10px;margin-top:16px;justify-content:center}
-    .btn{background:linear-gradient(180deg,var(--accent),var(--accent-2));padding:8px 14px;border-radius:10px;color:#fff;font-weight:700;font-size:14px;display:inline-block}
+    .opontocerto-card { background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%); border: 1px solid var(--border); border-radius: 16px; padding: 32px; display: grid; grid-template-columns: 1fr 350px; gap: 32px; align-items: center; margin-top: 40px; }
+    .preview-box { height: 200px; background: #000; border-radius: 8px; border: 1px solid var(--border); overflow: hidden; display: flex; align-items: center; justify-content: center; position: relative; }
+    
+    .insights-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 40px; }
+    .insight-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 24px; display: flex; flex-direction: column; transition: transform 0.2s, box-shadow 0.2s; }
+    .insight-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0,0,0,0.3); border-color: rgba(255,255,255,0.1); }
+    .insight-card h3 { font-size: 18px; margin: 0 0 12px; line-height: 1.4; color: #fff; }
+    .insight-card p { font-size: 14px; color: var(--muted); margin-bottom: 20px; flex-grow: 1; }
+    
+    .card-footer { display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: 20px; border-top: 1px solid var(--border); }
+    .source-link { font-size: 12px; color: var(--muted); text-decoration: underline; }
 
-    /* CARROSSEL */
-    .home-carousel-wrap{margin-top:12px;display:flex;justify-content:center;z-index:3}
-    .home-carousel{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;max-width:980px}
-    .carousel-card{
-      background:var(--card-bg);padding:10px;border-radius:12px;
-      min-width:220px;max-width:260px;box-shadow:0 8px 18px rgba(0,0,0,0.18);
-      border:1px solid rgba(255,255,255,0.02);transition:transform .14s ease,box-shadow .14s ease;
-      display:flex;gap:10px;align-items:center;cursor:pointer;color:inherit;text-decoration:none;
-    }
-    .carousel-card:hover{transform:translateY(-4px);box-shadow:0 12px 26px rgba(0,0,0,0.28)}
-    .carousel-card .icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,var(--accent),var(--accent-2))}
+    /* FOOTER */
+    footer { border-top: 1px solid var(--border); padding: 40px 0; margin-top: 80px; color: var(--muted); font-size: 14px; }
+    .footer-content { display: flex; justify-content: space-between; align-items: center; }
+    .footer-links { display: flex; gap: 24px; }
 
-    /* SECTIONS */
-    section{padding:10px 0}
-    .card{background:var(--card-bg);padding:10px;border-radius:12px;box-shadow:0 8px 18px rgba(0,0,0,0.18);border:1px solid rgba(255,255,255,0.02)}
-    h2{margin:0 0 10px;font-size:20px}
-    p,li{color:var(--muted);font-size:13.5px;margin:0 0 6px}
-
-    /* SEGMENTOS GRID */
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:10px}
-    .item{background:rgba(255,255,255,0.06);padding:10px;border-radius:12px;min-height:100px;cursor:pointer;display:flex;gap:10px;align-items:center;transition:transform .12s ease}
-    .item:hover{transform:translateY(-3px)}
-    .item .icon{width:40px;height:40px;border-radius:10px;background:linear-gradient(180deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center}
-
-    /* CONTROLES DO TODOS INSIGHTS */
-    .controls{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:8px}
-    .search input{width:100%;padding:8px 10px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:rgba(255,255,255,0.02);color:#fff;font-size:13px}
-    .chip{padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.03);cursor:pointer;font-weight:600;font-size:13px;color:var(--muted)}
-    .chip.active{background:linear-gradient(180deg,var(--accent),var(--accent-2));color:#fff}
-
-    .insights-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:10px}
-    .insight-card{background:rgba(255,255,255,0.04);padding:10px;border-radius:12px;min-height:110px;display:flex;flex-direction:column;gap:8px}
-    .insight-meta{font-size:13px;color:var(--muted);margin-top:auto;display:flex;justify-content:space-between;align-items:center}
-    .tag-small{font-size:12px;padding:6px 8px;border-radius:8px;background:rgba(0,0,0,0.12);color:var(--muted)}
-
-    .sources{margin-top:8px;background:var(--glass);padding:10px;border-radius:10px;color:var(--muted);font-size:13px;border:1px solid rgba(255,255,255,0.02)}
-
-    footer{padding:16px 0;text-align:center;color:rgba(255,255,255,0.65);margin-top:20px}
-
-    /* RESPONSIVO */
-    @media (max-width:980px){
-      .grid{grid-template-columns:repeat(2,1fr)}
-      .insights-grid{grid-template-columns:repeat(2,1fr)}
-      .hero-title{font-size:44px}
-      .hero-panel{padding:18px 20px}
-    }
-    @media (max-width:640px){
-      .grid{grid-template-columns:1fr}
-      .insights-grid{grid-template-columns:1fr}
-      .menu{display:none}
-      .hero-title{font-size:30px}
-      .inner{padding:14px 12px}
-      .hero{padding:18px 0 10px}
-      .hero-panel{width:calc(100% - 32px);padding:14px}
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+      .hero-ctas { justify-content: center; }
+      .hero-lead { margin-left: auto; margin-right: auto; }
+      .image-columns { display: none; } /* Hide hero animation on mobile for performance */
+      .opontocerto-card { grid-template-columns: 1fr; }
+      .nav { padding: 0 20px; }
+      .brand { position: static; transform: none; margin-right: auto; }
+      .page-title-header { display: none; }
     }
   </style>
 </head>
@@ -180,242 +131,248 @@
   <header>
     <div class="inner">
       <div class="nav">
-        <div class="brand" onclick="scrollToTop()">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Sebrae_logo.svg" alt="Sebrae">
-          <span>Mercado.</span>
-        </div>
+        <!-- Título Esquerda (Desktop) -->
+        <div class="page-title-header">Mercados.</div>
 
+        <!-- Logo Central -->
+        <a href="index.html" class="brand">
+          <img src="./assets/sebrae_fundo_transparente.webp" alt="Sebrae">
+        </a>
+
+        <!-- Menu Direita -->
         <nav class="menu">
-          <a href="#sobre">Sobre</a>
-          <a href="#segmentos">Segmentos</a>
-          <a href="#todos-insights">Todos os Insights</a>
-          <a href="#contato">Contato</a>
+          <a href="sobre.html">Sobre</a>
+          <a href="#todos-insights">Insights</a>
+          <a href="contato.html">Contato</a>
         </nav>
       </div>
     </div>
   </header>
 
-  <!-- HERO -->
-  <section class="hero" aria-label="hero">
-    <div class="hero-bg" role="img" aria-label="Interior de minimercado com prateleiras"></div>
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="inner hero-grid">
+      
+      <!-- Texto Hero -->
+      <div class="hero-panel">
+        <div style="display:inline-block; background:rgba(63,122,87,0.2); color:#4fd17c; font-size:11px; font-weight:700; padding:6px 12px; border-radius:100px; margin-bottom:16px; border:1px solid rgba(63,122,87,0.3);">BETA v1.0</div>
+        <h1 class="hero-title">Inteligência de<br>Mercado.</h1>
+        <p class="hero-lead">Canal digital que reúne insights, análises e recomendações estratégicas para apoiar a Rede Sebrae e os pequenos negócios.</p>
+        
+        <div class="hero-ctas">
+          <a href="#todos-insights" class="btn btn-primary">Ver Insights</a>
+          <a href="https://opontocerto.sebrae.com.br/painel" target="_blank" class="btn btn-outline">O Ponto Certo ↗</a>
+        </div>
 
-    <div class="inner hero-inner">
-      <!-- painel que envolve título + lead (Opção B) -->
-      <div class="hero-panel" role="group" aria-label="Título e resumo">
-        <h1 class="hero-title">Inteligência de<br/>Mercado.</h1>
-        <p class="hero-lead">
-          Canal digital que reúne insights, análises, tendências e oportunidades 
-          para apoiar a Rede Sebrae e os Pequenos Negócios.
-        </p>
-
-        <div class="hero-ctas" role="navigation" aria-label="Ações rápidas">
-          <a class="btn" href="#todos-insights">Ver todos os insights</a>
-          <a class="btn" href="https://opontocerto.sebrae.com.br/painel" target="_blank" style="background:transparent;border:1px solid rgba(255,255,255,0.06)">O Ponto Certo</a>
+        <!-- Box Sobre Rápido -->
+        <div style="margin-top: 40px; padding: 20px; background: var(--card-bg); border-radius: 12px; border: 1px solid var(--border);">
+          <strong style="color: #fff; display: block; margin-bottom: 8px;">Sobre o Canal</strong>
+          <p style="font-size: 14px; color: var(--muted); margin: 0;">Um hub de conhecimento rápido. Publicamos boletins mensais, estudos de tendência e alertas por segmento para facilitar a tomada de decisão.</p>
         </div>
       </div>
 
-      <!-- CARROSSEL -->
-      <div class="home-carousel-wrap">
-        <div class="home-carousel">
-          <!-- Card 1 -->
-          <a href="insights_bares_restaurantes.html" class="carousel-card">
-            <div class="icon" aria-hidden>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 3h14l-1 10a3 3 0 01-3 3h-6a3 3 0 01-3-3L5 3z" stroke="#fff" stroke-width="1.2" stroke-linecap="round"/></svg>
-            </div>
-            <div style="flex:1">
-              <h4 style="margin:0 0 4px">Bares & Restaurantes</h4>
-              <p style="margin:0;color:var(--muted);font-size:12.5px">Confraternizações impulsionam o pico de dezembro.</p>
-            </div>
-          </a>
-
-          <!-- Card 2 -->
-          <a href="insights_varejo_moda.html" class="carousel-card">
-            <div class="icon" aria-hidden>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 7l2-3h12l2 3v11a1 1 0 01-1 1H5a1 1 0 01-1-1V7z" stroke="#fff" stroke-width="1.2" stroke-linecap="round"/></svg>
-            </div>
-            <div style="flex:1">
-              <h4 style="margin:0 0 4px">Varejo de Moda</h4>
-              <p style="margin:0;color:var(--muted);font-size:12.5px">Omnichannel e redes sociais lideram conversão.</p>
-            </div>
-          </a>
-
-          <!-- Card 3 -->
-          <a href="insights_minimercados.html" class="carousel-card">
-            <div class="icon" aria-hidden>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6 6h15l-1.5 9h-12L6 6z" stroke="#fff" stroke-width="1.2" stroke-linecap="round"/></svg>
-            </div>
-            <div style="flex:1">
-              <h4 style="margin:0 0 4px">Minimercados</h4>
-              <p style="margin:0;color:var(--muted);font-size:12.5px">Proximidade e apps locais aumentam alcance.</p>
-            </div>
-          </a>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- SOBRE -->
-  <section id="sobre">
-    <div class="inner">
-      <div class="card">
-        <h2>Sobre o Canal</h2>
-        <p>Canal Beta de Inteligência de Mercado — entregas rápidas para orientar decisões da Rede Sebrae e dos pequenos negócios. Publicamos insights, estudos e recomendações táticas por segmento.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- SEGMENTOS -->
-  <section id="segmentos">
-    <div class="inner">
-      <h2>Segmentos Prioritários</h2>
-      <div class="grid">
-        <a class="item" href="insights_bares_restaurantes.html">
-          <div class="icon" aria-hidden></div>
-          <div><h3 style="margin:0;font-size:16px">Bares e Restaurantes</h3><p style="margin:0">Consumo, canais e sazonalidade.</p></div>
-        </a>
-
-        <a class="item" href="insights_varejo_moda.html">
-          <div class="icon" aria-hidden></div>
-          <div><h3 style="margin:0;font-size:16px">Varejo de Moda</h3><p style="margin:0">Sortimento, preço e tendências.</p></div>
-        </a>
-
-        <a class="item" href="insights_minimercados.html">
-          <div class="icon" aria-hidden></div>
-          <div><h3 style="margin:0;font-size:16px">Minimercados</h3><p style="margin:0">Giro, proximidade e conveniência.</p></div>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- TODOS INSIGHTS -->
-  <section id="todos-insights">
-    <div class="inner">
-      <h2>Todos os Insights</h2>
-
-      <div class="card">
-        <div class="controls">
-          <div class="search" style="flex:1"><input id="searchInput" placeholder="Buscar insights..." /></div>
-          <div class="filter">
-            <div class="chip active" data-filter="all">Todos</div>
-            <div class="chip" data-filter="bares">Bares & Rest.</div>
-            <div class="chip" data-filter="moda">Moda</div>
-            <div class="chip" data-filter="mini">Minimercados</div>
+      <!-- Animação Imagens Hero -->
+      <div class="image-columns">
+        <div class="col">
+          <div class="stack animated">
+            <div class="tile"><img src="./assets/hero-minimercado.webp"><div class="pill">Minimercados</div></div>
+            <div class="tile"><img src="./assets/feira_livre.webp"><div class="pill">Feiras</div></div>
+            <div class="tile"><img src="./assets/frutas_feira.webp"><div class="pill">Hortifruti</div></div>
+            <!-- Duplicatas para loop -->
+            <div class="tile"><img src="./assets/hero-minimercado.webp"><div class="pill">Minimercados</div></div>
+            <div class="tile"><img src="./assets/feira_livre.webp"><div class="pill">Feiras</div></div>
           </div>
         </div>
-
-        <div id="insightsGrid" class="insights-grid">
-          <article class="insight-card" data-tags="sazonalidade delivery confraternizacao" data-seg="bares">
-            <h3 style="font-size:16px;margin:0">Bares & Restaurantes — Dez/2025</h3>
-            <p style="margin-top:4px;color:var(--muted)">Confraternizações impulsionam faturamento; digital é decisivo para captar demanda.</p>
-            <div class="insight-meta"><span class="tag-small">Sazonalidade</span><a class="btn" href="insights_bares_restaurantes.html" style="padding:6px 10px;font-size:12px">Abrir</a></div>
-          </article>
-
-          <article class="insight-card" data-tags="omnichannel redes ecommerce moda" data-seg="moda">
-            <h3 style="margin:0;font-size:16px">Varejo de Moda — Dez/2025</h3>
-            <p style="margin-top:4px;color:var(--muted)">Categoria segue líder no e-commerce; redes sociais aceleram conversão.</p>
-            <div class="insight-meta"><span class="tag-small">Omnichannel</span><a class="btn" href="insights_varejo_moda.html" style="padding:6px 10px;font-size:12px">Abrir</a></div>
-          </article>
-
-          <article class="insight-card" data-tags="conveniencia proximidade apps" data-seg="mini">
-            <h3 style="margin:0;font-size:16px">Minimercados — Dez/2025</h3>
-            <p style="margin-top:4px;color:var(--muted)">Proximidade e apps locais ampliam alcance; giro rápido é chave.</p>
-            <div class="insight-meta"><span class="tag-small">Conveniência</span><a class="btn" href="insights_minimercados.html" style="padding:6px 10px;font-size:12px">Abrir</a></div>
-          </article>
+        <div class="col col-2">
+          <div class="stack animated">
+            <div class="tile"><img src="./assets/loja_roupas_feira.webp"><div class="pill">Moda</div></div>
+            <div class="tile"><img src="./assets/mulher_sentada_cafeteria.webp"><div class="pill">Food Service</div></div>
+            <div class="tile"><img src="./assets/cabide_roupas_masculinas.webp"><div class="pill">Varejo</div></div>
+            <!-- Duplicatas para loop -->
+            <div class="tile"><img src="./assets/loja_roupas_feira.webp"><div class="pill">Moda</div></div>
+            <div class="tile"><img src="./assets/mulher_sentada_cafeteria.webp"><div class="pill">Food Service</div></div>
+          </div>
         </div>
-
-        <div class="sources">
-          <strong>Fontes:</strong>
-          <ul style="padding-left:18px;margin:6px 0 0">
-            <li><a href="https://abrasel.com.br" target="_blank" rel="noopener">Abrasel</a></li>
-            <li><a href="https://ecommercebrasil.com.br" target="_blank" rel="noopener">Ecommerce Brasil</a></li>
-            <li><a href="https://abras.com.br" target="_blank" rel="noopener">ABRAS</a></li>
-            <li><a href="https://agenciasebrae.com.br" target="_blank" rel="noopener">Agência Sebrae</a></li>
-          </ul>
-        </div>
-
       </div>
+
+    </div>
+  </section>
+
+  <!-- CONTROLS / FILTERS -->
+  <section class="controls-section">
+    <div class="inner controls">
+      <div class="search-wrap">
+        <input type="text" id="searchInput" placeholder="Buscar insights (ex: delivery, moda, 2025)...">
+      </div>
+      <div class="chips">
+        <div class="chip active" data-filter="all">Todos</div>
+        <div class="chip" data-filter="bares">Bares & Restaurantes</div>
+        <div class="chip" data-filter="moda">Varejo de Moda</div>
+        <div class="chip" data-filter="mini">Minimercados</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DESTAQUE O PONTO CERTO -->
+  <section class="inner">
+    <div class="opontocerto-card">
+      <div class="opc-info">
+        <h3 class="section-title" style="margin-bottom:12px">Destaque: O Ponto Certo</h3>
+        <p style="color:var(--muted); margin-bottom:24px;">Ferramenta de geomarketing para encontrar a localização ideal. Visualize dados demográficos, concorrência e potencial de consumo no mapa.</p>
+        <div style="display:flex; gap:12px;">
+          <button id="opc-toggle" class="btn btn-primary" aria-pressed="false">Abrir Preview</button>
+          <a href="https://opontocerto.sebrae.com.br/painel" target="_blank" class="btn btn-outline">Abrir Painel</a>
+        </div>
+      </div>
+      <div class="opc-preview">
+        <div class="preview-box" id="opcPreviewBox">
+          <img id="opcFallbackImg" src="./assets/opontocerto_preview.webp" alt="Preview Dashboard" style="width:100%; height:100%; object-fit:cover;">
+        </div>
+        <div style="text-align:center; font-size:12px; color:var(--muted); margin-top:8px;" id="opcStatus">
+          Preview estático (clique para interagir)
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSIGHTS GRID -->
+  <section id="todos-insights" class="inner" style="padding-top:60px; padding-bottom:60px;">
+    <h2 class="section-title">Últimos Insights</h2>
+    
+    <div class="insights-grid" id="insightsGrid">
+      
+      <!-- Card: Bares -->
+      <article class="insight-card" data-tags="sazonalidade delivery" data-seg="bares">
+        <div class="chip active" style="width:fit-content; margin-bottom:12px; font-size:10px;">DEZ/2025</div>
+        <h3>Bares & Restaurantes</h3>
+        <p>Confraternizações impulsionam faturamento; digitalização (delivery e reservas) é decisiva para captar demanda.</p>
+        <div class="card-footer">
+          <a href="insights_bares_restaurantes.html" class="btn btn-outline" style="font-size:12px; padding:8px 16px;">Ler Insight</a>
+          <a href="https://abrasel.com.br" target="_blank" class="source-link">Fonte: Abrasel</a>
+        </div>
+      </article>
+
+      <!-- Card: Moda -->
+      <article class="insight-card" data-tags="omnichannel redes social" data-seg="moda">
+        <div class="chip active" style="width:fit-content; margin-bottom:12px; font-size:10px;">DEZ/2025</div>
+        <h3>Varejo de Moda</h3>
+        <p>Omnichannel e redes sociais aceleram conversão. Logística de troca e click & collect são diferenciais.</p>
+        <div class="card-footer">
+          <a href="insights_varejo_moda.html" class="btn btn-outline" style="font-size:12px; padding:8px 16px;">Ler Insight</a>
+          <a href="https://ecommercebrasil.com.br" target="_blank" class="source-link">Fonte: E-commerce Brasil</a>
+        </div>
+      </article>
+
+      <!-- Card: Minimercados -->
+      <article class="insight-card" data-tags="conveniência proximidade apps" data-seg="mini">
+        <div class="chip active" style="width:fit-content; margin-bottom:12px; font-size:10px;">DEZ/2025</div>
+        <h3>Minimercados</h3>
+        <p>Proximidade e apps locais ampliam alcance. Giro rápido de estoque é chave para rentabilidade.</p>
+        <div class="card-footer">
+          <a href="insights_minimercados.html" class="btn btn-outline" style="font-size:12px; padding:8px 16px;">Ler Insight</a>
+          <a href="https://abras.com.br" target="_blank" class="source-link">Fonte: ABRAS</a>
+        </div>
+      </article>
+
     </div>
   </section>
 
   <!-- CONTATO -->
-  <section id="contato">
-    <div class="inner">
-      <h2>Contato</h2>
-      <div class="card" style="display:grid;grid-template-columns:1fr 260px;gap:12px">
-        <form id="contactForm" style="display:flex;flex-direction:column;gap:8px">
-          <input name="nome" placeholder="Nome" required />
-          <input name="email" type="email" placeholder="E-mail" required />
-          <textarea name="mensagem" rows="3" placeholder="Mensagem" required></textarea>
-          <button class="btn" type="submit" style="width:130px">Enviar</button>
-        </form>
-
-        <div style="font-size:13px;color:var(--muted)">
-          <h4 style="margin:0 0 8px">Atualmente publicados</h4>
-          <p>Segmentos: Bares e Restaurantes; Varejo de Moda; Minimercados.</p>
-          <p>Ferramenta destaque: <a href="https://opontocerto.sebrae.com.br" target="_blank" rel="noopener">O Ponto Certo</a></p>
-        </div>
+  <section class="inner" style="margin-bottom:40px;">
+    <div style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px; padding: 40px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;">
+      <div>
+        <h3 style="margin: 0 0 8px; color: #fff;">Tem sugestões ou dúvidas?</h3>
+        <p style="margin: 0; color: var(--muted);">Envie seu feedback para nossa equipe de inteligência.</p>
       </div>
+      <a href="contato.html" class="btn btn-primary">Entrar em Contato</a>
     </div>
   </section>
 
-  <footer><div class="inner">© Canal de Inteligência de Mercado — Sebrae • Versão Beta</div></footer>
+  <!-- FOOTER -->
+  <footer>
+    <div class="inner footer-content">
+      <div>
+        <strong>Mercados.</strong> <span style="color:var(--muted)">Intelligence Hub</span>
+        <div style="margin-top:8px; font-size:12px;">© 2025 Sebrae • Versão Beta</div>
+      </div>
+      <div class="footer-links">
+        <a href="politica_privacidade.html">Política de Privacidade</a>
+        <a href="termos_uso.html">Termos de Uso</a>
+      </div>
+    </div>
+  </footer>
 
-  <!-- SCRIPTS -->
+  <!-- Scripts: Filtro, Fallback Imagem e Preview Iframe -->
   <script>
-    function scrollToTop(){ window.scrollTo({top:0,behavior:'smooth'}); }
+    /* 1. Fallback de Imagem */
+    function handleImgError(img){
+      img.style.display = 'none'; // ou substituir por placeholder
+    }
 
-    // Carousel subtle opacity loop (visual only)
-    (function(){
-      const links = document.querySelectorAll('.home-carousel .carousel-card');
-      let i=0;
-      if(!links.length) return;
-      setInterval(()=> {
-        links.forEach((el,idx)=> el.style.opacity = (idx === i ? '1' : '0.88'));
-        i = (i+1)%links.length;
-      },4200);
-    })();
-
-    // Search + filter
+    /* 2. Filtro de Cards */
     (function(){
       const searchInput = document.getElementById('searchInput');
-      const chips = Array.from(document.querySelectorAll('.chip'));
-      const cards = Array.from(document.querySelectorAll('.insight-card'));
+      const chips = document.querySelectorAll('.chip');
+      const cards = document.querySelectorAll('.insight-card');
 
-      function apply(){
-        const q = (searchInput.value||'').toLowerCase();
-        const active = chips.find(c=>c.classList.contains('active'));
-        const seg = active ? active.dataset.filter : 'all';
+      function filter(){
+        const term = searchInput.value.toLowerCase();
+        const activeChip = document.querySelector('.chip.active').dataset.filter;
 
-        cards.forEach(card=>{
-          const text = (card.innerText||'').toLowerCase();
-          const tags = (card.dataset.tags||'').toLowerCase();
-          const segCard = card.dataset.seg || 'all';
-          const matchQ = !q || text.includes(q) || tags.includes(q);
-          const matchSeg = seg === 'all' || segCard === seg;
-          card.style.display = (matchQ && matchSeg) ? 'flex' : 'none';
+        cards.forEach(card => {
+          const text = card.innerText.toLowerCase();
+          const seg = card.dataset.seg;
+          const matchTerm = text.includes(term);
+          const matchSeg = activeChip === 'all' || seg === activeChip;
+
+          card.style.display = (matchTerm && matchSeg) ? 'flex' : 'none';
         });
       }
 
-      chips.forEach(chip=> chip.addEventListener('click', ()=>{
-        chips.forEach(c=>c.classList.remove('active'));
-        chip.classList.add('active');
-        apply();
-      }));
+      chips.forEach(chip => {
+        chip.addEventListener('click', () => {
+          chips.forEach(c => c.classList.remove('active'));
+          chip.classList.add('active');
+          filter();
+        });
+      });
 
-      if(searchInput) searchInput.addEventListener('input', apply);
-      apply();
+      searchInput.addEventListener('input', filter);
     })();
 
-    // Contact form fallback
-    document.getElementById('contactForm').addEventListener('submit', function(e){
-      e.preventDefault();
-      const f = e.target;
-      const subject = encodeURIComponent('Contato — IM: ' + (f.nome.value||''));
-      const body = encodeURIComponent('Nome: '+(f.nome.value||'')+'\nEmail: '+(f.email.value||'')+'\n\nMensagem:\n'+(f.mensagem.value||''));
-      window.location.href = 'mailto:seu-email@exemplo.com?subject=' + subject + '&body=' + body;
-      setTimeout(()=> alert('Seu cliente de e-mail abrirá para envio.'),200);
-    });
+    /* 3. Lógica do Preview O Ponto Certo */
+    (function(){
+      const btn = document.getElementById('opc-toggle');
+      const box = document.getElementById('opcPreviewBox');
+      const status = document.getElementById('opcStatus');
+      let iframeLoaded = false;
+
+      btn.addEventListener('click', () => {
+        if(!iframeLoaded){
+          status.innerText = "Carregando preview...";
+          // Cria iframe dinamicamente para não pesar o carregamento inicial
+          const iframe = document.createElement('iframe');
+          iframe.src = "https://opontocerto.sebrae.com.br/painel";
+          iframe.style.width = "100%";
+          iframe.style.height = "100%";
+          iframe.style.border = "none";
+          
+          iframe.onload = () => {
+            status.innerText = "Preview interativo ativo.";
+            document.getElementById('opcFallbackImg').style.display = 'none';
+          };
+          
+          box.appendChild(iframe);
+          iframeLoaded = true;
+          btn.innerText = "Recarregar Preview";
+        } else {
+          // Apenas recarrega se clicar de novo
+          const iframe = box.querySelector('iframe');
+          if(iframe) iframe.src = iframe.src;
+        }
+      });
+    })();
   </script>
+
 </body>
 </html>
