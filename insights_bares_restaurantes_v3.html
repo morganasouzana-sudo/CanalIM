@@ -271,20 +271,34 @@
     </div>
   </header>
 
-  <!-- Hero com imagem inserida -->
-  <section class="hero-mini section-full" role="region" aria-label="hero">
-    <div class="hero-media" aria-hidden="true">
-      <!-- imagem solicitada: ./assets/mulher_sentada_cafeteria.webp -->
-      <img src="./assets/mulher_sentada_cafeteria.webp" alt="" />
-    </div>
+<!-- HERO — imagem acima do texto (não como background) -->
+<section class="section-full" style="padding:0;">
+  
+  <!-- imagem ocupando só a área superior -->
+  <div class="hero-banner" style="
+    width:100%;
+    overflow:hidden;
+    border-bottom:1px solid rgba(255,255,255,0.06);
+  ">
+    <img src="./assets/mulher_sentada_cafeteria.webp" 
+         alt="Ambiente de cafeteria"
+         style="
+           width:100%;
+           height:180px;
+           object-fit:cover;
+         ">
+  </div>
 
-    <div class="hero-inner">
-      <div class="hero-content">
-        <h1 class="hero-title">Bares & Restaurantes — Dez/2025</h1>
-        <p class="hero-lead">Foco: sazonalidade de fim de ano e digitalização (delivery, cardápio digital, reservas) — dados verificados e fontes oficiais.</p>
-      </div>
-    </div>
-  </section>
+  <!-- textos do hero -->
+  <div class="hero-mini inner" style="padding-top:24px; padding-bottom:18px;">
+    <h1 class="hero-title">Bares & Restaurantes — Dez/2025</h1>
+    <p class="hero-lead">
+      Foco: sazonalidade de fim de ano e digitalização (delivery, cardápio digital, reservas) — dados verificados e fontes oficiais.
+    </p>
+  </div>
+
+</section>
+
 
   <main class="wrap" role="main">
     <!-- Card resumo -->
