@@ -3,224 +3,385 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Inteligência de Mercado — Varejo de Moda (Dez/2025)</title>
-
-  <!-- Fonte Unbounded -->
-  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <title>Varejo de Moda: Tendências Dez/2025 — Canal IM Sebrae</title>
+  <meta name="description" content="Análise do varejo de moda para o final de 2025. Foco em comportamento digital, estratégias omnichannel e tendências de compra.">
+  
+  <!-- Fontes (Mesmas do Index e outras páginas) -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
-    /* ===== VARS (mesmas do template principal) ===== */
+    /* --- CSS COMPARTILHADO (Visual Identity) --- */
     :root{
-      --bg:#071f2a;
-      --muted:#c9d6d9;
-      --accent:#376a45;
-      --accent-2:#2f5a3b;
-      --card-bg: rgba(255,255,255,0.07);
-      --max-inner:1200px;
-      --gutter:20px;
-      --radius:14px;
+      --bg:#0f3336;
+      --card-bg: rgba(255,255,255,0.04);
+      --text: #ffffff;
+      --muted: #bfcfce;
+      --accent: #3f7a57;
+      --accent-2: #2f5f46;
+      --accent-hover: #2f5f46;
+      --border: rgba(255,255,255,0.06);
+      --gutter: 20px;
+      --max-inner: 1200px;
+      --radius: 12px;
     }
-    /* ===== BASE ===== */
-    html,body{margin:0;padding:0;height:100%;min-height:100vh;background:var(--bg);font-family:'Unbounded',system-ui,Arial,sans-serif;color:#fff;-webkit-font-smoothing:antialiased;}
-    *,*::before,*::after{box-sizing:border-box}
-    a{color:inherit}
-    .inner{max-width:var(--max-inner);margin:0 auto;padding:24px var(--gutter)}
-    /* header */
-    header.site-header{background:var(--bg);border-bottom:1px solid rgba(255,255,255,0.03)}
-    .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
-    .brand{display:flex;align-items:center;gap:12px;font-weight:800}
-    .brand img{height:30px}
-    /* hero */
-    .hero-mini{padding:28px 0 18px;border-bottom:1px solid rgba(255,255,255,0.03)}
-    .hero-title{font-size:28px;margin:0}
-    .hero-lead{color:var(--muted);margin-top:6px;font-size:14px}
-    /* main */
-    .wrap{max-width:var(--max-inner);margin:24px auto;padding:0 var(--gutter)}
-    .card{background:var(--card-bg);padding:20px 18px;border-radius:var(--radius);margin-bottom:12px;box-shadow:0 8px 22px rgba(0,0,0,0.28);border:1px solid rgba(255,255,255,0.02)}
-    h1,h2,h3{margin:0;color:#fff}
-    p,ul,li{margin:0 0 6px 0;color:var(--muted);font-size:14px}
-    .meta{font-size:13px;color:var(--muted);margin-top:10px}
-    /* carousel */
-    .carousel-wrap{padding:12px;border-radius:12px;margin-bottom:14px;border:1px solid rgba(255,255,255,0.02)}
-    .slides{position:relative;overflow:hidden;border-radius:10px}
-    .slides input{display:none}
-    .track{display:flex;width:400%;transition:transform .45s ease}
-    .panel{min-width:100%;padding:18px;box-sizing:border-box;display:flex;gap:18px;align-items:center}
-    .panel .left{flex:1}
-    .panel h3{margin:0 0 6px;font-size:18px;color:#fff}
-    .panel p{margin:0;color:var(--muted)}
-    .dots{display:flex;gap:8px;justify-content:center;padding:12px 0}
-    .dot{width:10px;height:10px;border-radius:50%;background:#26424a;cursor:pointer;border:1px solid rgba(255,255,255,0.04)}
+
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:'Inter', sans-serif;line-height:1.6}
+    
+    /* Unbounded apenas para Títulos para dar personalidade */
+    h1, h2, h3, .brand, .page-title-header, .btn { font-family: 'Unbounded', sans-serif; }
+
+    a{color:inherit;text-decoration:none;transition:0.2s}
+    a:hover{color:var(--accent)}
+    
+    .inner{max-width:var(--max-inner);margin:0 auto;padding:0 var(--gutter)}
+
+    /* Scroll Progress Bar */
+    .progress-container {width: 100%; height: 4px; background: var(--bg); position: fixed; top: 0; z-index: 50;}
+    .progress-bar {height: 4px; background: #4fd17c; width: 0%;}
+
+    /* Header (Compacto) */
+    header{background:rgba(15, 51, 54, 0.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:40}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0;height:70px}
+    .brand img {height: 32px; background: rgba(255,255,255,0.9); padding: 4px; border-radius: 4px;}
+    .menu {display:flex; gap:20px; font-size:14px; font-weight:500}
+    
+    /* Layout do Artigo */
+    .article-layout {
+      display: grid;
+      grid-template-columns: 1fr 300px; /* Conteúdo + Sidebar */
+      gap: 40px;
+      padding-top: 40px;
+      padding-bottom: 60px;
+    }
+
+    /* Conteúdo Principal */
+    .breadcrumb { font-size: 12px; color: var(--muted); margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .breadcrumb a:hover { text-decoration: underline; color: #4fd17c; }
+
+    .article-header { margin-bottom: 30px; }
+    h1.article-title { font-size: 42px; line-height: 1.1; margin: 0 0 16px 0; background: linear-gradient(to right, #fff, #bfcfce); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    
+    .meta-info { display: flex; align-items: center; gap: 16px; font-size: 14px; color: var(--muted); border-bottom: 1px solid var(--border); padding-bottom: 24px; }
+    .tag { background: var(--accent); color: white; padding: 4px 10px; border-radius: 4px; font-size: 11px; font-weight: 700; text-transform: uppercase; }
+
+    .hero-img-container { width: 100%; height: 400px; border-radius: 16px; overflow: hidden; margin-bottom: 40px; border: 1px solid var(--border); }
+    .hero-img-container img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* Estilos de Texto do Artigo */
+    .content p { font-size: 18px; color: #e0e0e0; margin-bottom: 24px; }
+    .content h2 { font-size: 24px; margin-top: 40px; margin-bottom: 16px; color: #fff; border-left: 4px solid var(--accent); padding-left: 16px; }
+    .content ul { margin-bottom: 24px; padding-left: 20px; }
+    .content li { margin-bottom: 10px; color: #e0e0e0; }
+    
+    .blockquote { 
+      background: var(--card-bg); 
+      padding: 24px; 
+      border-radius: 12px; 
+      border-left: 4px solid #4fd17c; 
+      font-size: 18px; 
+      font-style: italic; 
+      color: #fff;
+      margin: 32px 0; 
+    }
+
+    /* --- CARROSSEL (Adaptado para Moda) --- */
+    .carousel-wrap {
+      display:block;
+      background: linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
+      padding:12px;
+      border-radius:12px;
+      margin-bottom:32px;
+      border:1px solid rgba(255,255,255,0.04);
+    }
+    .slides { position:relative; overflow:hidden; border-radius:10px; }
+    .slides input { display:none; }
+    .track { display:flex; width:400%; transition:transform .45s ease; }
+    .panel { min-width:100%; padding:18px; box-sizing:border-box; display:flex; gap:18px; align-items:center; }
+    .panel .left { flex:1; }
+    .panel h3 { margin:0 0 6px; font-size:18px; color:#4fd17c; } /* Título em verde destaque */
+    .panel p { margin:0; color:var(--muted); font-size:15px; }
+
+    .dots { display:flex; gap:8px; justify-content:center; padding:12px 0; }
+    .dot { width:10px; height:10px; border-radius:50%; background:rgba(255,255,255,0.12); cursor:pointer; display:inline-block; border:1px solid rgba(255,255,255,0.04); }
+    /* radio -> track transform */
     #v1:checked ~ .track { transform:translateX(0%); }
     #v2:checked ~ .track { transform:translateX(-100%); }
     #v3:checked ~ .track { transform:translateX(-200%); }
     #v4:checked ~ .track { transform:translateX(-300%); }
-    #v1:checked ~ .dots label[for="v1"], #v2:checked ~ .dots label[for="v2"], #v3:checked ~ .dots label[for="v3"], #v4:checked ~ .dots label[for="v4"] { background:linear-gradient(180deg,var(--accent),var(--accent-2));box-shadow:0 6px 14px rgba(11,40,20,0.18)}
-    /* grid */
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
-    .grid .item{background:rgba(255,255,255,0.03);padding:16px;border-radius:12px;min-height:120px}
-    .sources{background:rgba(255,255,255,0.02);padding:12px;border-radius:10px;font-size:13px;color:var(--muted);margin-top:12px;border:1px solid rgba(255,255,255,0.02)}
-    footer.site-footer{padding:18px 0;text-align:center;color:rgba(255,255,255,0.6);font-size:13px;margin-top:18px}
-    @media(max-width:1000px){.grid{grid-template-columns:repeat(2,1fr)}.panel{flex-direction:column;align-items:flex-start}}
-    @media(max-width:640px){.grid{grid-template-columns:1fr}.panel{padding:12px}.hero-title{font-size:20px}}
+    /* active dot */
+    #v1:checked ~ .dots label[for="v1"], #v2:checked ~ .dots label[for="v2"], #v3:checked ~ .dots label[for="v3"], #v4:checked ~ .dots label[for="v4"] {
+      background:linear-gradient(180deg,var(--accent),var(--accent-2));
+      box-shadow: 0 6px 14px rgba(11,40,20,0.12);
+    }
+
+    /* --- GRID DE DADOS --- */
+    .data-grid { display:grid; grid-template-columns: repeat(2,1fr); gap:16px; margin-top:24px; margin-bottom: 40px; }
+    .data-item { background: rgba(255,255,255,0.03); padding:20px; border-radius:12px; border:1px solid var(--border); }
+    .data-item h3 { font-size: 16px; color: #fff; margin-bottom: 8px; }
+    .data-item p { font-size: 14px; color: var(--muted); margin: 0; line-height: 1.5; }
+    .data-item .meta { font-size: 11px; text-transform: uppercase; color: var(--accent); margin-top: 12px; font-weight: 700; letter-spacing: 0.5px; }
+
+    /* Sidebar */
+    .sidebar { position: sticky; top: 100px; height: fit-content; }
+    .sidebar-card { background: var(--card-bg); padding: 20px; border-radius: 12px; border: 1px solid var(--border); margin-bottom: 20px; }
+    .sidebar-title { font-size: 16px; font-weight: 700; margin-bottom: 16px; display: block; color: var(--muted); border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+    
+    .related-item { display: flex; gap: 12px; margin-bottom: 16px; align-items: start; }
+    .related-item img { width: 60px; height: 60px; border-radius: 8px; object-fit: cover; background: #000; }
+    .related-info h4 { margin: 0 0 4px; font-size: 14px; line-height: 1.3; }
+    .related-info span { font-size: 12px; color: var(--muted); }
+
+    .btn-back { display: inline-flex; align-items: center; gap: 8px; color: var(--muted); font-size: 14px; font-weight: 600; margin-bottom: 20px; }
+    .btn-back:hover { color: #fff; transform: translateX(-4px); }
+
+    /* Footer igual ao Index */
+    footer { border-top: 1px solid var(--border); padding: 30px 0; margin-top: 60px; font-size: 13px; color: var(--muted); text-align: center; }
+
+    @media (max-width: 900px) {
+      .article-layout { grid-template-columns: 1fr; }
+      .sidebar { position: static; }
+      .hero-img-container { height: 250px; }
+      h1.article-title { font-size: 28px; }
+      .data-grid { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
-  <!-- header -->
-  <header class="site-header section-full" role="banner">
+
+  <!-- Barra de Progresso de Leitura -->
+  <div class="progress-container">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+
+  <!-- HEADER -->
+  <header>
     <div class="inner">
-      <div class="nav" role="navigation">
-        <div class="brand">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Sebrae_logo.svg" alt="Sebrae">
-          <span>Canal IM — Varejo de Moda</span>
-        </div>
+      <div class="nav">
+        <a href="index.html" class="brand">
+          <img src="./assets/sebrae_fundo_transparente.webp" alt="Sebrae">
+        </a>
         <nav class="menu">
-          <a href="https://morganasouzana-sudo.github.io/CanalIM/" target="_blank">Voltar ao site</a>
+          <a href="index.html">Home</a>
+          <a href="todos_insights.html" style="color:#fff">Insights</a> <!-- Ativo -->
+          <a href="contato.html">Contato</a>
         </nav>
       </div>
     </div>
   </header>
 
-  <!-- hero -->
-  <section class="hero-mini section-full" role="region">
-    <div class="hero-inner inner">
-      <h1 class="hero-title">Varejo de Moda — Dez/2025</h1>
-      <p class="hero-lead">Foco: comportamento digital, omnichannel e tendências de compra para pequenos varejistas de moda.</p>
+  <main class="inner">
+    
+    <div class="article-layout">
+      
+      <!-- COLUNA PRINCIPAL (ARTIGO) -->
+      <article>
+        <a href="index.html" class="btn-back">← Voltar para Insights</a>
+        
+        <div class="breadcrumb">
+          <a href="index.html">Home</a> • <a href="todos_insights.html">Insights</a> • <span>Varejo de Moda</span>
+        </div>
+
+        <header class="article-header">
+          <h1 class="article-title">Varejo de Moda: Tendências para Dezembro de 2025</h1>
+          
+          <div class="meta-info">
+            <span class="tag">Varejo</span>
+            <span>📅 11 Dez, 2025</span>
+            <span>⏱️ 4 min de leitura</span>
+          </div>
+        </header>
+
+        <div class="hero-img-container">
+          <!-- Usando a imagem de moda da pasta assets -->
+          <img src="./assets/loja_roupas_feira.webp" alt="Loja de roupas" onerror="this.src='https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=1200'">
+        </div>
+
+        <div class="content">
+          <p class="lead">O setor de moda segue entre as categorias mais relevantes do e-commerce brasileiro. Micro e pequenos varejistas que adotam estratégias digitais e omnichannel apresentam vantagem competitiva, com destaque para a curadoria, apelo visual e logística eficiente.</p>
+
+          <!-- CARROSSEL DE DESTAQUES -->
+          <div class="carousel-wrap">
+            <div class="slides">
+              <input type="radio" name="v" id="v1" checked>
+              <input type="radio" name="v" id="v2">
+              <input type="radio" name="v" id="v3">
+              <input type="radio" name="v" id="v4">
+
+              <div class="track">
+                <div class="panel">
+                  <div class="left">
+                    <h3>Moda: Líder no E-commerce</h3>
+                    <p>Dados de vendas online mostram que moda permanece como categoria de destaque em faturamento e frequência de compra.</p>
+                  </div>
+                </div>
+                <div class="panel">
+                  <div class="left">
+                    <h3>Omnichannel em Alta</h3>
+                    <p>Compra online + retirada em loja (click & collect) e provas agendadas fortalecem a experiência e aumentam conversão.</p>
+                  </div>
+                </div>
+                <div class="panel">
+                  <div class="left">
+                    <h3>Influência das Redes</h3>
+                    <p>Reels, fotos de alta qualidade e microinfluenciadores locais têm impacto direto na descoberta e intenção de compra.</p>
+                  </div>
+                </div>
+                <div class="panel">
+                  <div class="left">
+                    <h3>Logística & Devolução</h3>
+                    <p>Políticas de troca claras e prazos de entrega competitivos são decisivos para a retenção do cliente.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="dots">
+                <label class="dot" for="v1"></label>
+                <label class="dot" for="v2"></label>
+                <label class="dot" for="v3"></label>
+                <label class="dot" for="v4"></label>
+              </div>
+            </div>
+          </div>
+
+          <h2>1. Omnichannel e Experiência</h2>
+          <p>A integração entre o online e a loja física não é mais opcional. O cliente de 2025 espera fluidez: pesquisar no Instagram, comprar no site e trocar na loja física sem atrito. O modelo "Click & Collect" (comprar online e retirar na loja) não só economiza frete, mas gera oportunidades de venda adicional no momento da retirada.</p>
+          
+          <div class="blockquote">
+            "A loja física se transformou em um ponto de experiência e logística. O provador é o novo estúdio de conteúdo para o cliente."
+            <br><span style="font-size:14px; color:var(--muted); margin-top:8px; display:block">— Relatório de Tendências Sebrae</span>
+          </div>
+
+          <h2>2. O Poder do Visual e das Redes</h2>
+          <p>Pequenos varejistas têm se destacado pelo uso autêntico das redes sociais. Conteúdos em vídeo (Reels/TikTok) que mostram a modelagem, caimento e combinações de peças têm taxas de conversão superiores a fotos estáticas. A parceria com microinfluenciadores locais reforça a confiança e a proximidade com o público-alvo.</p>
+
+          <!-- GRID DE DADOS VERIFICADOS -->
+          <div class="data-grid">
+            <div class="data-item">
+              <h3>E-commerce Forte</h3>
+              <p>Faturamento do e-commerce brasileiro superou R$200 bi (2024) — moda segue no topo.</p>
+              <div class="meta">Fonte: Edrone / Ecommerce Brasil</div>
+            </div>
+            <div class="data-item">
+              <h3>Presença Digital</h3>
+              <p>Pequenos varejistas têm elevado uso de redes sociais para curadoria e vendas diretas.</p>
+              <div class="meta">Fonte: ABVtex / Ecommerce Brasil</div>
+            </div>
+            <div class="data-item">
+              <h3>Omnichannel</h3>
+              <p>Integração online/loja (retirada, prova) aumenta taxa de conversão e reduz desistências.</p>
+              <div class="meta">Fonte: Think With Google</div>
+            </div>
+            <div class="data-item">
+              <h3>Sazonalidade</h3>
+              <p>Datas comemorativas e trocas de coleção exigem táticas rápidas de preço e promoção.</p>
+              <div class="meta">Fonte: ABVtex</div>
+            </div>
+            <div class="data-item">
+              <h3>Creators Locais</h3>
+              <p>Conteúdo visual e parcerias locais impulsionam descoberta e confiança na marca.</p>
+              <div class="meta">Fonte: Ecommerce Brasil</div>
+            </div>
+            <div class="data-item">
+              <h3>Logística</h3>
+              <p>Política de trocas clara e prazos de entrega ágeis são diferenciais competitivos.</p>
+              <div class="meta">Fonte: Ecommerce Brasil</div>
+            </div>
+          </div>
+
+          <h2>3. Recomendações Práticas</h2>
+          <p>Para alavancar as vendas neste final de ano, foque nestas ações:</p>
+          <ul>
+            <li><strong>Produção de Conteúdo:</strong> Capacite a equipe para fotos rápidas e produção de vídeos curtos (baixo custo, alto impacto).</li>
+            <li><strong>Serviços Híbridos:</strong> Implemente click & collect ou agendamento de prova para aumentar o fluxo em loja.</li>
+            <li><strong>Política de Trocas:</strong> Padronize e comunique claramente sua política de trocas para reduzir a hesitação na compra.</li>
+            <li><strong>Tráfego Pago Local:</strong> Teste microcampanhas segmentadas por região e interesses (lookalike).</li>
+            <li><strong>Gestão de Estoque:</strong> Monitore itens de saída rápida para evitar ruptura em períodos de pico.</li>
+          </ul>
+
+        </div>
+
+        <!-- Botão de Ação -->
+        <div style="margin-top:40px; padding:30px; background:linear-gradient(135deg, #0f3336 0%, #0c2b2d 100%); border:1px solid var(--accent); border-radius:12px; text-align:center">
+          <h3 style="margin-top:0">Analise o mercado na sua região</h3>
+          <p style="color:var(--muted); margin-bottom:20px">Descubra onde estão seus concorrentes e o perfil de renda do seu bairro.</p>
+          <a href="https://opontocerto.sebrae.com.br/painel" target="_blank" class="btn" style="background:#4fd17c; color:#0f3336; padding:12px 24px; border-radius:8px; font-weight:700; text-decoration:none">Acessar Painel Geomarketing</a>
+        </div>
+
+      </article>
+
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        
+        <!-- Card: Sobre o Autor/Fonte -->
+        <div class="sidebar-card">
+          <span class="sidebar-title">Fonte da Análise</span>
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px">
+            <div style="width:40px; height:40px; background:#fff; border-radius:50%; display:flex; align-items:center; justify-content:center">
+              <img src="./assets/sebrae_fundo_transparente.webp" style="height:20px">
+            </div>
+            <div>
+              <div style="font-weight:700; font-size:14px">Inteligência Sebrae</div>
+              <div style="font-size:12px; color:var(--muted)">Baseado em dados ABVtex</div>
+            </div>
+          </div>
+          <p style="font-size:13px; color:var(--muted); margin:0">Compilamos dados de mercado para apoiar sua tomada de decisão.</p>
+          <div style="margin-top:12px; padding-top:12px; border-top:1px solid var(--border); font-size:12px; color:var(--muted)">
+            <strong>Links de referência:</strong><br>
+            <a href="#" style="color:var(--accent); text-decoration:underline">Ecommerce Brasil</a><br>
+            <a href="#" style="color:var(--accent); text-decoration:underline">Agência Sebrae</a>
+          </div>
+        </div>
+
+        <!-- Card: Relacionados -->
+        <div class="sidebar-card">
+          <span class="sidebar-title">Veja Também</span>
+          
+          <a href="insights_bares_restaurantes.html" class="related-item">
+            <img src="./assets/mulher_sentada_cafeteria.webp" alt="Restaurante">
+            <div class="related-info">
+              <h4>Bares & Restaurantes</h4>
+              <span>Alimentação • Dez 2025</span>
+            </div>
+          </a>
+
+          <a href="insights_minimercados.html" class="related-item">
+            <img src="./assets/hero-minimercado.webp" alt="Mercado">
+            <div class="related-info">
+              <h4>Minimercados</h4>
+              <span>Varejo • Dez 2025</span>
+            </div>
+          </a>
+
+        </div>
+
+        <!-- Card: Newsletter (Simples) -->
+        <div class="sidebar-card" style="background:var(--accent); border-color:var(--accent)">
+          <span class="sidebar-title" style="color:#fff; border-color:rgba(255,255,255,0.2)">Receba Alertas</span>
+          <p style="font-size:13px; color:rgba(255,255,255,0.9)">Inscreva-se para receber o boletim mensal.</p>
+          <input type="email" placeholder="Seu e-mail corporativo" style="width:100%; padding:10px; border-radius:6px; border:none; margin-bottom:10px; font-size:13px">
+          <button style="width:100%; padding:10px; background:#0f3336; color:#fff; border:none; border-radius:6px; cursor:pointer; font-weight:700">Inscrever-se</button>
+        </div>
+
+      </aside>
+
     </div>
-  </section>
-
-  <main class="wrap" role="main">
-    <section class="card" aria-labelledby="resumo">
-      <h2 id="resumo">Resumo rápido</h2>
-      <p>Moda segue entre as categorias mais relevantes do e-commerce no Brasil. Micro e pequenos varejistas que adotam estratégias digitais e omnichannel apresentam vantagem competitiva — destaque para curadoria, visual e logística de entrega/retirada.</p>
-      <div class="meta">Perspectiva digital • Fontes setoriais</div>
-    </section>
-
-    <!-- carousel -->
-    <section class="carousel-wrap card" aria-label="Destaques">
-      <div class="slides" aria-live="polite">
-        <input type="radio" name="v" id="v1" checked>
-        <input type="radio" name="v" id="v2">
-        <input type="radio" name="v" id="v3">
-        <input type="radio" name="v" id="v4">
-
-        <div class="track" role="list">
-          <div class="panel" role="listitem" aria-labelledby="vol1">
-            <div class="left">
-              <h3 id="vol1">Moda entre as categorias líderes no e-commerce</h3>
-              <p>Dados de vendas online mostram que moda permanece como categoria de destaque em faturamento e frequência de compra.</p>
-            </div>
-          </div>
-
-          <div class="panel" role="listitem" aria-labelledby="vol2">
-            <div class="left">
-              <h3 id="vol2">Omnichannel em alta</h3>
-              <p>Compra online + retirada em loja (click & collect) e provas agendadas fortalecem a experiência e aumentam conversão.</p>
-            </div>
-          </div>
-
-          <div class="panel" role="listitem" aria-labelledby="vol3">
-            <div class="left">
-              <h3 id="vol3">Influência das redes sociais</h3>
-              <p>Reels, fotos e microinfluenciadores locais têm impacto direto na descoberta e intenção de compra.</p>
-            </div>
-          </div>
-
-          <div class="panel" role="listitem" aria-labelledby="vol4">
-            <div class="left">
-              <h3 id="vol4">Logística e devolução</h3>
-              <p>Políticas de troca e prazos de entrega são decisivos; pequenos varejistas que oferecem retirada rápida e troca facilitada aumentam retenção.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="dots" role="tablist" aria-label="Navegação">
-          <label class="dot" for="v1" role="tab" aria-selected="true" aria-controls="vol1"></label>
-          <label class="dot" for="v2" role="tab" aria-selected="false" aria-controls="vol2"></label>
-          <label class="dot" for="v3" role="tab" aria-selected="false" aria-controls="vol3"></label>
-          <label class="dot" for="v4" role="tab" aria-selected="false" aria-controls="vol4"></label>
-        </div>
-      </div>
-    </section>
-
-    <!-- dados -->
-    <section class="card" aria-labelledby="dados">
-      <h2 id="dados">Dados rápidos (verificados)</h2>
-
-      <div class="grid" role="list">
-        <div class="item" role="listitem">
-          <h3>E-commerce: grande participação</h3>
-          <p>Faturamento do e-commerce brasileiro passou de R$200 bi (2024) — moda é uma das categorias mais vendidas online.</p>
-          <div class="meta">Fonte: Edrone / Ecommerce Brasil</div>
-        </div>
-
-        <div class="item" role="listitem">
-          <h3>Micro e pequenos com presença digital</h3>
-          <p>Pequenos varejistas de moda têm elevado uso de redes sociais para curadoria e vendas diretas.</p>
-          <div class="meta">Fonte: ABVtex / Ecommerce Brasil</div>
-        </div>
-
-        <div class="item" role="listitem">
-          <h3>Omnichannel impulsiona conversão</h3>
-          <p>Integração entre online e loja física (retirada, prova e devolução) aumenta taxa de conversão e reduz desistências.</p>
-          <div class="meta">Fonte: Think With Google / Ecommerce Brasil</div>
-        </div>
-
-        <div class="item" role="listitem">
-          <h3>Impacto das redes e creators</h3>
-          <p>Conteúdo visual (reels, fotos com modelagem) e parcerias locais impulsionam descoberta e confiança.</p>
-          <div class="meta">Fonte: Ecommerce Brasil / ABVtex</div>
-        </div>
-
-        <div class="item" role="listitem">
-          <h3>Sazonalidade e lançamentos</h3>
-          <p>Sazonalidade (coleções, datas comemorativas) permanece crítica — promoção e reposicionamento de preço são táticos essenciais.</p>
-          <div class="meta">Fonte: ABVtex</div>
-        </div>
-
-        <div class="item" role="listitem">
-          <h3>Logística e política de trocas</h3>
-          <p>Política de trocas clara e prazos de entrega competitivos são diferenciais para pequenos lojistas.</p>
-          <div class="meta">Fonte: Ecommerce Brasil</div>
-        </div>
-      </div>
-
-      <div class="sources" aria-label="Fontes">
-        <strong>Fontes principais:</strong>
-        <ul style="margin-top:8px">
-          <li><a href="https://www.ecommercebrasil.com.br/artigos/categorias-mais-vendidas-no-ecommerce/" target="_blank" rel="noopener" style="color:var(--accent)">Ecommerce Brasil — Categorias mais vendidas (Moda)</a></li>
-          <li><a href="https://edrone.me/pt/blog/dados-ecommerce-brasil" target="_blank" rel="noopener" style="color:var(--accent)">Edrone — Dados e projeções de e-commerce</a></li>
-          <li><a href="https://www.abvtex.org.br/noticias" target="_blank" rel="noopener" style="color:var(--accent)">ABVtex — Setor de moda</a></li>
-          <li><a href="https://www.thinkwithgoogle.com/intl/pt-br/insights/" target="_blank" rel="noopener" style="color:var(--accent)">Think With Google — Insights digitais</a></li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="card" aria-labelledby="acoes">
-      <h2 id="acoes">Recomendações práticas</h2>
-      <ul style="margin-top:8px;color:var(--muted)">
-        <li>Capacitar lojistas para fotos rápidas e produção de reels (baixo custo, alto impacto).</li>
-        <li>Implementar click & collect / agendamento de prova para aumentar taxa de conversão.</li>
-        <li>Padronizar políticas de troca e comunicação clara no checkout.</li>
-        <li>Testar microcampanhas por região com segmentação por interesse e lookalike local.</li>
-        <li>Monitorar itens de saída e reposição rápida para evitar ruptura de estoque em períodos de pico.</li>
-      </ul>
-    </section>
-
-    <footer class="site-footer">
-      © Canal de Inteligência de Mercado — Sebrae • Versão Beta
-    </footer>
   </main>
 
-  <!-- optional autoplay script (comentado) -->
+  <footer>
+    <div class="inner">© 2025 Canal de Inteligência de Mercado — Sebrae</div>
+  </footer>
+
   <script>
-    /* Autoplay opcional
-    (function(){
-      const radios = ['v1','v2','v3','v4'].map(id=>document.getElementById(id));
-      let idx=0;
-      setInterval(()=>{ idx=(idx+1)%radios.length; radios[idx].checked=true; },5000);
-    })();
-    */
+    // Script simples para a barra de progresso de leitura
+    window.onscroll = function() {
+      var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      var scrolled = (winScroll / height) * 100;
+      document.getElementById("progressBar").style.width = scrolled + "%";
+    };
   </script>
+
 </body>
 </html>
