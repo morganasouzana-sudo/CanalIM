@@ -272,16 +272,27 @@
   </header>
 
 <section class="hero" role="img" aria-label="Ambiente de bar e restaurante"
-             style="background-image:url('./assets/mulher_sentada_cafeteria.webp')">
-      <!-- tag <img> fornece fallback e melhora acessibilidade / SEO -->
-      <img class="bg" src="./assets/mulher_sentada_cafeteria.webp" alt="Pessoas em restaurante" onerror="this.style.display='none'">
-      <div class="overlay" aria-hidden="true"></div>
+         style="background-image:url('./assets/mulher_sentada_cafeteria.webp')">
 
-      <div class="hero-content">
-        <h1 class="hero-title">Bares &amp; Restaurantes — Dez/2025</h1>
-        <p class="hero-lead">Confraternizações de fim de ano aquecem movimento; digitalização (delivery e redes sociais) é decisiva para captura de demanda.</p>
-      </div>
-    </section>
+  <!-- fallback acessível (aparece só se o background falhar) -->
+  <img class="bg" src="./assets/mulher_sentada_cafeteria.webp"
+       alt="Pessoas em restaurante"
+       onerror="this.style.display='none'">
+
+  <!-- overlay para contraste -->
+  <div class="overlay" aria-hidden="true"></div>
+
+  <!-- conteúdo -->
+  <div class="hero-content">
+    <h1 class="hero-title">Bares &amp; Restaurantes — Dez/2025</h1>
+
+    <p class="hero-lead">
+      Confraternizações de fim de ano aquecem movimento; digitalização (delivery e redes sociais)
+      é decisiva para captura de demanda.
+    </p>
+  </div>
+</section>
+
 
 
   <main class="wrap" role="main">
