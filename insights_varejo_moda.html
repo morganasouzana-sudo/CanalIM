@@ -44,7 +44,7 @@
     /* Header (Compacto) */
     header{background:rgba(15, 51, 54, 0.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:40}
     .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0;height:70px}
-    .brand img {height: 32px; background: rgba(255,255,255,0.9); padding: 4px; border-radius: 4px;}
+    .brand img {height: 53px; background: transparent !important; padding: 0 !important; border-radius: 0; transition: transform 0.3s ease;}
     .menu {display:flex; gap:20px; font-size:14px; font-weight:500}
     
     /* Layout do Artigo */
@@ -159,9 +159,10 @@
   <header>
     <div class="inner">
       <div class="nav">
-        <a href="index.html" class="brand">
-          <img src="./assets/sebrae_fundo_transparente.webp" alt="Sebrae">
-        </a>
+       <a href="index.html" class="brand">
+        <img src="./assets/logo-movemais.svg" alt="Move Mais Sebrae"
+       style="background: transparent !important; background-color: transparent !important;">
+       </a>
         <nav class="menu">
           <a href="index.html">Home</a>
           <a href="todos_insights.html" style="color:#fff">Insights</a> <!-- Ativo -->
