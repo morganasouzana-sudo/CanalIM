@@ -27,17 +27,24 @@
 
     *{box-sizing:border-box}
 
-    /* AJUSTE GOOGLE SITES: Garante que o fundo cubra tudo */
-    html, body {
+    /* AJUSTE GOOGLE SITES: Força o fundo verde em toda a área do iframe */
+    html {
+      width: 100%;
+      height: 100%;
+      background-color: #0f3336; /* Define a cor no elemento raiz */
+      overflow-x: hidden;
+    }
+
+    body {
       margin: 0;
       padding: 0;
-      background: var(--bg);
+      background-color: #0f3336;
       color: var(--text);
       font-family: 'Inter', sans-serif;
       line-height: 1.6;
       width: 100%;
-      min-height: 100vh;
-      overflow-x: hidden; /* Evita rolagem horizontal indesejada no iframe */
+      min-height: 100%;
+      overflow-x: hidden;
     }
     
     /* Unbounded para títulos */
