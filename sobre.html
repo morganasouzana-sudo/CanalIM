@@ -66,12 +66,23 @@
     .value-icon{ font-size:28px; margin-bottom:20px; display:inline-block; background: rgba(63,122,87,0.2); padding: 10px; border-radius: 8px; }
     .value-card h3 { font-size: 18px; margin-bottom: 12px; }
 
+    /* NOVA SEÇÃO: Roadmap (Baseado no TR) */
+    .roadmap-section { margin-bottom: 80px; padding: 40px; background: rgba(0,0,0,0.2); border-radius: 20px; border: 1px solid var(--border); }
+    .roadmap-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px; }
+    .step { position: relative; padding-top: 20px; border-top: 2px solid var(--border); }
+    .step.active { border-top-color: var(--accent); }
+    .step.active::before { content: ''; width: 12px; height: 12px; background: var(--accent); border-radius: 50%; position: absolute; top: -7px; left: 0; }
+    .step h4 { color: #fff; margin-bottom: 8px; font-size: 16px; }
+    .step p { font-size: 13px; color: var(--muted); }
+    .step-tag { display: inline-block; padding: 4px 8px; border-radius: 4px; background: var(--card-bg); font-size: 10px; color: var(--muted); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
+    .step.active .step-tag { background: var(--accent); color: #fff; }
+
     /* Footer */
     footer{ border-top:1px solid var(--border); padding:40px 0; margin-top:auto; font-size:13px; color:var(--muted); }
     .footer-links{ display:flex; gap:24px; }
     .footer-links a{ color:var(--muted); text-decoration:none; }
 
-    @media(max-width:900px){ .grid-values, .method-grid{ grid-template-columns:1fr; } .about-hero h1{ font-size:32px; } }
+    @media(max-width:900px){ .grid-values, .method-grid, .roadmap-steps{ grid-template-columns:1fr; } .about-hero h1{ font-size:32px; } }
   </style>
 </head>
 <body>
@@ -143,6 +154,30 @@
               <span>Tradução dos dados em produtos claros: Oportunidades, Alertas de Curto Prazo e Trilhas de Recomendação.</span>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NOVA SEÇÃO: ROADMAP (Para dar visibilidade à evolução) -->
+    <div class="roadmap-section">
+      <h2 style="color:#fff; font-size:24px; text-align:center; margin-bottom:10px;">Evolução do Projeto</h2>
+      <p style="text-align:center; color:var(--muted); font-size:14px; margin-bottom:30px;">Acompanhe as próximas etapas de desenvolvimento da nossa plataforma.</p>
+      
+      <div class="roadmap-steps">
+        <div class="step active">
+          <span class="step-tag">Fase Atual</span>
+          <h4>1. Operação Beta</h4>
+          <p>Lançamento do canal digital com curadoria de insights para Bares, Moda e Minimercados. Validação do modelo com a rede.</p>
+        </div>
+        <div class="step">
+          <span class="step-tag">Próximo Passo</span>
+          <h4>2. Dados Dinâmicos</h4>
+          <p>Integração de painéis interativos (dashboards) e expansão da análise de sentimetria digital (reviews de clientes).</p>
+        </div>
+        <div class="step">
+          <span class="step-tag">Futuro</span>
+          <h4>3. Plataforma Inteligente</h4>
+          <p>Recomendação personalizada via IA, diagnóstico automatizado e integração total com o SBDCNet.</p>
         </div>
       </div>
     </div>
