@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Inteligência de Mercado — Varejo de Moda (Dez/2025)</title>
+
+  <!-- Fonte Unbounded -->
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===========================
+       VARS (padronizadas)
+       =========================== */
+    :root{
+      --bg: #0f3336;
+      --text: #ffffff;
+      --muted: #bfcfce;
+      --accent: #3f7a57;
+      --accent-2: #2f5f46;
+      --card-bg: rgba(255,255,255,0.04);
+      --max-inner:1200px;
+      --gutter:20px;
+      --radius:14px;
+    }
+
+    /* BASE */
+    html,body{
+      margin:0; padding:0;
+      width:100%; height:100%; min-height:100vh;
+      background:var(--bg);
+      color:var(--text);
+      font-family:'Unbounded', system-ui, Arial, sans-serif;
+      -webkit-font-smoothing:antialiased;
+    }
+    *,*::before,*::after{box-sizing:border-box}
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%; display:block}
+
+    .section-full{width:100%}
+    .inner{max-width:var(--max-inner);margin:0 auto;padding:24px var(--gutter)}
+
+    /* BOTÃO VOLTAR FIXO */
+    .back-btn {
+      position: fixed;
+      top: 12px;
+      left: 12px;
+      z-index: 9999;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      padding: 8px 12px;
+      color: #fff;
+      border-radius: 10px;
+      font-weight: 600;
+      backdrop-filter: blur(4px);
+    }
+
+    /* HEADER */
+    header.site-header {
+      background: transparent;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      position: relative;
+      z-index: 50;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 16px;
+      padding-bottom: 16px;
+    }
+
+    /* LOGO CENTRALIZADA */
+    .brand {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 30;
+    }
+    .brand img {
+      height: 56px;
+      width: auto;
+      display:block;
+      object-fit:contain;
+    }
+
+    /* TÍTULO À DIREITA */
+    .page-title-header {
+      margin-left: auto;
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--text);
+      white-space: nowrap;
+      transform: translateY(6px);
+      z-index: 31;
+    }
+
+    /* HERO - CARD COM IMAGEM */
+    .hero-wrap {
+      background: var(--bg);
+      padding: 28px 24px;
+    }
+
+    .hero-card {
+      background: var(--card-bg);
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.08);
+      max-width: 1200px;
+      margin: 0 auto;
+      box-shadow: 0 10px 30px rgba(2,6,10,0.45);
+    }
+
+    .hero-banner {
+      position: relative;
+      height: 350px;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    /* OVERLAY MAIS ESCURO (recomendado para imagem colorida) */
+    .hero-banner::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg,
+                   rgba(0,0,0,0.62) 0%,
+                   rgba(0,0,0,0.52) 40%,
+                   rgba(0,0,0,0.72) 100%);
+      z-index: 1;
+    }
+
+    /* PAINEL LEVE PARA O TEXTO (melhora separação da imagem) */
+    .hero-content {
+      position: absolute;
+      left: 28px;
+      right: 28px;
+      bottom: 18px;
+      z-index: 2;
+      color: #ffffff;
+      padding: 8px 12px;
+      border-radius: 8px;
+      background: rgba(0,0,0,0.06);
+      backdrop-filter: blur(3px);
+      text-shadow: 0 6px 18px rgba(0,0,0,0.55);
+    }
+
+    .hero-title {
+      margin: 0 0 8px 0;
+      font-weight: 800;
+      font-size: clamp(22px, 3.4vw, 44px);
+      line-height: 1.02;
+    }
+
+    /* HERO-LEAD: OPÇÃO 1 (texto claro e forte) */
+    .hero-lead {
+      margin: 0;
+      color: #ffffff;
+      font-size: clamp(12px, 1.8vw, 16px);
+      font-weight: 700;
+      letter-spacing: 0.2px;
+      text-shadow: 0 6px 18px rgba(0,0,0,0.7);
+    }
+
+    /* CONTEÚDO / CARDS */
+    .wrap { max-width:1200px; margin:24px auto; padding:0 var(--gutter); }
+    .card {
+      background: var(--card-bg);
+      padding:20px 18px;
+      border-radius: var(--radius);
+      margin-bottom:14px;
+      border:1px solid rgba(255,255,255,0.05);
+      box-shadow:0 8px 22px rgba(0,0,0,0.24);
+    }
+    h2 { font-size:20px; margin:0 0 8px 0; color:var(--text); }
+    p, li { font-size:14px; color:var(--muted); }
+
+    /* CARROSSEL */
+    .carousel-wrap { padding:12px; border-radius:12px; border:1px solid rgba(255,255,255,0.03); }
+    .slides { overflow:hidden; position:relative; border-radius:12px; }
+    .slides input { display:none; }
+    .track { display:flex; width:400%; transition: transform .45s; }
+    .panel { min-width:100%; padding:18px; display:flex; align-items:center; }
+    .panel h3 { margin:0 0 6px; }
+    .dots { display:flex; justify-content:center; gap:8px; padding:12px; }
+    .dot { width:10px; height:10px; border-radius:50%; background:rgba(255,255,255,0.14); }
+
+    #v1:checked ~ .track { transform:translateX(0%); }
+    #v2:checked ~ .track { transform:translateX(-100%); }
+    #v3:checked ~ .track { transform:translateX(-200%); }
+    #v4:checked ~ .track { transform:translateX(-300%); }
+
+    /* GRID */
+    .grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:12px; }
+    .grid .item { background:rgba(255,255,255,0.03); border-radius:12px; padding:16px; min-height:120px; color:var(--text); }
+    .meta { font-size:13px; color:var(--muted); margin-top:10px; }
+    .sources { background:rgba(255,255,255,0.01); padding:12px; border-radius:10px; font-size:13px; color:var(--muted); margin-top:12px; border:1px solid rgba(255,255,255,0.02); }
+
+    footer.site-footer { padding:18px 0; text-align:center; font-size:13px; color:var(--muted); margin-top:18px; }
+
+    /* RESPONSIVE */
+    @media(max-width:1000px){
+      .grid{grid-template-columns:repeat(2,1fr)}
+      .panel{flex-direction:column;align-items:flex-start}
+      .hero-banner{height:200px}
+    }
+    @media(max-width:640px){
+      .grid{grid-template-columns:1fr}
+      .panel{padding:12px}
+      .brand img{height:38px}
+      .hero-banner{height:140px}
+      .page-title-header{font-size:18px}
+    }
+  </style>
+</head>
+
+<body>
+  <!-- BOTÃO VOLTAR -->
+  <button class="back-btn" onclick="history.back()" aria-label="Voltar">← Voltar</button>
+
+  <!-- HEADER -->
+  <header class="site-header section-full" role="banner">
+    <div class="inner">
+      <div class="nav">
+
+        <!-- LOGO CENTRAL -->
+        <div class="brand">
+          <img src="./assets/sebrae_fundo_transparente.webp" alt="Sebrae">
+        </div>
+
+        <!-- TÍTULO À DIREITA -->
+        <div class="page-title-header">Varejo de Moda</div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO CARD -->
+  <section class="hero-wrap" aria-label="Hero — Varejo de Moda">
+    <div class="hero-card">
+      <div class="hero-banner" style="background-image: url('./assets/roupas_cabide.webp')">
+        <div class="hero-content">
+          <h1 class="hero-title">Varejo de Moda — Dez/2025</h1>
+          <!-- "Foco:" removido — texto em destaque (branco/forte) -->
+          <p class="hero-lead">Comportamento digital, omnichannel e tendências de compra para pequenos varejistas de moda.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTEÚDO -->
+  <main class="wrap" role="main">
+    <section class="card" aria-labelledby="resumo">
+      <h2 id="resumo">Resumo rápido</h2>
+      <p>Moda segue entre as categorias mais relevantes do e-commerce no Brasil. Micro e pequenos varejistas que adotam estratégias digitais e omnichannel apresentam vantagem competitiva — destaque para curadoria, visual e logística de entrega/retirada.</p>
+      <div class="meta">Perspectiva digital • Fontes setoriais</div>
+    </section>
+
+    <!-- CARROSSEL -->
+    <section class="carousel-wrap card" aria-label="Destaques">
+      <div class="slides" aria-live="polite">
+        <input type="radio" name="v" id="v1" checked>
+        <input type="radio" name="v" id="v2">
+        <input type="radio" name="v" id="v3">
+        <input type="radio" name="v" id="v4">
+
+        <div class="track" role="list">
+          <div class="panel" role="listitem" aria-labelledby="vol1">
+            <div class="left">
+              <h3 id="vol1">Moda entre as categorias líderes no e-commerce</h3>
+              <p>Moda permanece como categoria de destaque em faturamento e frequência de compra online.</p>
+            </div>
+          </div>
+
+          <div class="panel" role="listitem" aria-labelledby="vol2">
+            <div class="left">
+              <h3 id="vol2">Omnichannel em alta</h3>
+              <p>Compra online + retirada em loja (click & collect) e provas agendadas fortalecem a experiência.</p>
+            </div>
+          </div>
+
+          <div class="panel" role="listitem" aria-labelledby="vol3">
+            <div class="left">
+              <h3 id="vol3">Influência das redes sociais</h3>
+              <p>Reels e microinfluenciadores locais têm impacto direto na descoberta e intenção de compra.</p>
+            </div>
+          </div>
+
+          <div class="panel" role="listitem" aria-labelledby="vol4">
+            <div class="left">
+              <h3 id="vol4">Logística e devolução</h3>
+              <p>Políticas de troca e prazos de entrega são decisivos; retirada e troca facilitada aumentam retenção.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="dots" role="tablist" aria-label="Navegação">
+          <label class="dot" for="v1" role="tab" aria-selected="true" aria-controls="vol1"></label>
+          <label class="dot" for="v2" role="tab" aria-selected="false" aria-controls="vol2"></label>
+          <label class="dot" for="v3" role="tab" aria-selected="false" aria-controls="vol3"></label>
+          <label class="dot" for="v4" role="tab" aria-selected="false" aria-controls="vol4"></label>
+        </div>
+      </div>
+    </section>
+
+    <!-- DADOS -->
+    <section class="card" aria-labelledby="dados">
+      <h2 id="dados">Dados rápidos (verificados)</h2>
+
+      <div class="grid" role="list">
+        <div class="item" role="listitem">
+          <h3>E-commerce: grande participação</h3>
+          <p>Faturamento do e-commerce brasileiro passou de R$200 bi (2024) — moda é uma das categorias mais vendidas online.</p>
+          <div class="meta">Fonte: Edrone / Ecommerce Brasil</div>
+        </div>
+
+        <div class="item" role="listitem">
+          <h3>Micro e pequenos com presença digital</h3>
+          <p>Pequenos varejistas usam redes sociais para curadoria e vendas diretas.</p>
+          <div class="meta">Fonte: ABVtex / Ecommerce Brasil</div>
+        </div>
+
+        <div class="item" role="listitem">
+          <h3>Omnichannel impulsiona conversão</h3>
+          <p>Integração entre online e loja física aumenta taxa de conversão e reduz desistências.</p>
+          <div class="meta">Fonte: Think With Google / Ecommerce Brasil</div>
+        </div>
+
+        <div class="item" role="listitem">
+          <h3>Impacto das redes e creators</h3>
+          <p>Conteúdo visual e parcerias locais impulsionam descoberta e confiança.</p>
+          <div class="meta">Fonte: Ecommerce Brasil / ABVtex</div>
+        </div>
+
+        <div class="item" role="listitem">
+          <h3>Sazonalidade e lançamentos</h3>
+          <p>Coleções e datas comemorativas são momentos-chave para promoções e reposicionamento.</p>
+          <div class="meta">Fonte: ABVtex</div>
+        </div>
+
+        <div class="item" role="listitem">
+          <h3>Logística e política de trocas</h3>
+          <p>Políticas claras e prazos competitivos são diferenciais para pequenos lojistas.</p>
+          <div class="meta">Fonte: Ecommerce Brasil</div>
+        </div>
+      </div>
+
+      <div class="sources" aria-label="Fontes">
+        <strong>Fontes principais:</strong>
+        <ul style="margin-top:8px">
+          <li><a href="https://www.ecommercebrasil.com.br/artigos/categorias-mais-vendidas-no-ecommerce/" target="_blank" rel="noopener" style="color:var(--accent)">Ecommerce Brasil — Moda</a></li>
+          <li><a href="https://edrone.me/pt/blog/dados-ecommerce-brasil" target="_blank" rel="noopener" style="color:var(--accent)">Edrone — Dados e projeções</a></li>
+          <li><a href="https://www.abvtex.org.br/noticias" target="_blank" rel="noopener" style="color:var(--accent)">ABVtex — Setor</a></li>
+          <li><a href="https://www.thinkwithgoogle.com/intl/pt-br/insights/" target="_blank" rel="noopener" style="color:var(--accent)">Think With Google — Insights</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- RECOMENDAÇÕES -->
+    <section class="card" aria-labelledby="acoes">
+      <h2 id="acoes">Recomendações práticas</h2>
+      <ul style="margin-top:8px;color:var(--muted)">
+        <li>Capacitar lojistas para fotos rápidas e produção de reels.</li>
+        <li>Implementar click & collect e provas agendadas.</li>
+        <li>Padronizar políticas de troca e comunicação no checkout.</li>
+        <li>Testar microcampanhas por região.</li>
+        <li>Monitorar giro e reposição automática.</li>
+      </ul>
+    </section>
+
+    <footer class="site-footer">
+      © Canal de Inteligência de Mercado — Sebrae • Versão Beta
+    </footer>
+  </main>
+
+</body>
+</html>
