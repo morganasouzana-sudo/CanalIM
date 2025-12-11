@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="pt-BR">
 <head>
@@ -44,87 +43,29 @@
       box-shadow:0 14px 40px rgba(0,0,0,0.45);
       border:1px solid rgba(255,255,255,0.03);
     }
-    .hero-title { font-size:6px; margin:0 0 10px; line-height:0.98; font-weight:800; text-shadow: 0 12px 30px rgba(0,0,0,0.6) }
+    .hero-title { font-size:64px; margin:0 0 10px; line-height:0.98; font-weight:800; text-shadow: 0 12px 30px rgba(0,0,0,0.6) }
     .hero-lead { color:var(--muted); font-size:15px; max-width:760px; margin:0 0 18px; line-height:1.45; text-shadow:0 4px 14px rgba(0,0,0,0.35) }
     .hero-ctas{display:flex;gap:12px}
     .btn{background:linear-gradient(180deg,var(--accent),var(--accent-2));padding:10px 16px;border-radius:10px;color:#fff;font-weight:700;display:inline-block}
 
     /* image columns - larger */
-.image-columns { 
-  display:flex; 
-  gap:18px; 
-  justify-content:center; 
-  align-items:flex-start; 
-  overflow:hidden; 
-}
-
-/* 🔽 Diminuí a altura do card */
-.col { 
-  width:360px; 
-  height:600px; 
-  overflow:hidden; 
-  border-radius:12px; 
-  position:relative;
-  background: linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0.06));
-  border:1px solid rgba(255,255,255,0.03); 
-}
-
-.stack { 
-  position:absolute; 
-  inset:0; 
-  display:flex; 
-  flex-direction:column; 
-  gap:18px; 
-  padding:16px; 
-  transform: translateY(0); 
-  will-change: transform; 
-}
-
-/* 🔼 Aumentei a imagem verticalmente */
-.tile { 
-  height:460px; 
-  border-radius:10px; 
-  overflow:hidden; 
-  background:#111; 
-  box-shadow:0 10px 24px rgba(0,0,0,0.35); 
-  border:1px solid rgba(255,255,255,0.02); 
-  display:flex; 
-  position:relative; 
-  cursor:pointer; 
-}
-
-.tile img { 
-  width:100%; 
-  height:100%; 
-  object-fit:cover; 
-  display:block; 
-}
+    .image-columns { display:flex; gap:18px; justify-content:center; align-items:flex-start; overflow:hidden; }
+    .col { width:360px; height:720px; overflow:hidden; border-radius:12px; position:relative;
+          background: linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0.06));
+          border:1px solid rgba(255,255,255,0.03); }
+    .stack { position:absolute; inset:0; display:flex; flex-direction:column; gap:18px; padding:16px; transform: translateY(0); will-change: transform; }
+    .tile { height:400px; border-radius:10px; overflow:hidden; background:#111; box-shadow:0 10px 24px rgba(0,0,0,0.35); border:1px solid rgba(255,255,255,0.02); display:flex; position:relative; cursor:pointer; }
+    .tile img { width:100%; height:100%; object-fit:cover; display:block; }
 
     /* fallback tile when image fails */
-    .tile .fallback {
-      width:100%; height:100%; display:flex; align-items:center; justify-content:center; background:linear-gradient(180deg,#0c2b2d,#052223);
-      color:var(--muted); font-size:15px; padding:10px; text-align:center;
-    }
+    .tile .fallback { width:100%; height:100%; display:flex; align-items:center; justify-content:center; background:linear-gradient(180deg,#0c2b2d,#052223); color:var(--muted); font-size:15px; padding:10px; text-align:center; }
 
     /* overlay pill */
-    .tile .pill {
-      position:absolute;
-      left:12px; top:10px;
-      background:linear-gradient(180deg,var(--accent),var(--accent-2));
-      padding:8px 10px;border-radius:10px;font-size:13px;font-weight:800;
-      box-shadow:0 6px 12px rgba(0,0,0,0.4);
-      opacity:0; transform: translateY(-6px); transition:opacity .18s, transform .18s;
-      pointer-events:none;
-    }
-    .tile:hover .pill,
-    .tile:focus-within .pill,
-    .tile.show-pill .pill { opacity:1; transform: translateY(0); pointer-events:auto; }
+    .tile .pill { position:absolute; left:12px; top:10px; background:linear-gradient(180deg,var(--accent),var(--accent-2)); padding:8px 10px;border-radius:10px;font-size:13px;font-weight:800; box-shadow:0 6px 12px rgba(0,0,0,0.4); opacity:0; transform: translateY(-6px); transition:opacity .18s, transform .18s; pointer-events:none; }
+    .tile:hover .pill, .tile:focus-within .pill, .tile.show-pill .pill { opacity:1; transform: translateY(0); pointer-events:auto; }
 
-    /* seamless continuous scroll: move -50% while stack contains duplicated sequence */
-    @keyframes scrollDown {
-      0%{ transform: translateY(0); }
-      100%{ transform: translateY(-50%); }
-    }
+    /* seamless continuous scroll */
+    @keyframes scrollDown { 0%{ transform: translateY(0); } 100%{ transform: translateY(-50%); } }
     .stack.animated { animation: scrollDown linear infinite; animation-duration: 30s; }
     .col.col-1 .stack.animated { animation-duration: 32s; }
     .col.col-2 .stack.animated { animation-duration: 36s; }
@@ -149,9 +90,23 @@
     .contact-card { background:var(--card-bg); padding:14px; border-radius:12px; border:1px solid rgba(255,255,255,0.02); display:flex; flex-direction:column; gap:12px; }
     .contact-card .btn { width:fit-content; padding:10px 14px; font-size:15px; }
 
+    /* SEBRAE central tile (novo) */
+    .sebrae-center { display:flex; justify-content:center; margin-bottom:12px; }
+    .sebrae-center img { height:64px; width:auto; display:block; filter: drop-shadow(0 8px 18px rgba(0,0,0,0.6)); }
+
+    /* PONTO CERTO preview card (novo) */
+    .opontocerto-card { display:grid; grid-template-columns: 1fr 360px; gap:16px; align-items:center; background:var(--card-bg); padding:16px; border-radius:12px; border:1px solid rgba(255,255,255,0.02); margin-top:18px; }
+    .opc-info h3{margin:0 0 8px 0;color:var(--text)}
+    .opc-info p{margin:0 0 12px;color:var(--muted)}
+    .opc-preview { display:flex; flex-direction:column; gap:8px; align-items:stretch; }
+    .opc-preview .preview-box { height:220px; border-radius:10px; overflow:hidden; background:#061515; border:1px solid rgba(255,255,255,0.03); display:flex; align-items:center; justify-content:center; position:relative; }
+    .opc-preview .preview-box img { width:100%; height:100%; object-fit:cover; display:block; }
+    .opc-preview .preview-controls { display:flex; gap:8px; justify-content:space-between; align-items:center; }
+    .opc-note { font-size:13px; color:var(--muted); }
+
     /* responsive */
-    @media (max-width:1100px) { .hero-grid { grid-template-columns:1fr 520px; gap:20px } .col{height:640px;width:300px} .hero-title{font-size:48px} .insights-grid{grid-template-columns:repeat(2,1fr)} .tile{height:210px} }
-    @media (max-width:820px) { .hero-grid{grid-template-columns:1fr} .image-columns{order:2;margin-top:18px;justify-content:flex-start} .col{width:48%;height:520px} .hero-panel{padding:20px} .hero-title{font-size:36px} .insights-grid{grid-template-columns:1fr} .tile{height:180px} }
+    @media (max-width:1100px) { .hero-grid { grid-template-columns:1fr 520px; gap:20px } .col{height:640px;width:300px} .hero-title{font-size:48px} .insights-grid{grid-template-columns:repeat(2,1fr)} .tile{height:210px} .opontocerto-card{grid-template-columns:1fr 300px} }
+    @media (max-width:820px) { .hero-grid{grid-template-columns:1fr} .image-columns{order:2;margin-top:18px;justify-content:flex-start} .col{width:48%;height:520px} .hero-panel{padding:20px} .hero-title{font-size:36px} .insights-grid{grid-template-columns:1fr} .tile{height:180px} .opontocerto-card{grid-template-columns:1fr} .opc-preview{order:-1} }
     @media (max-width:480px) { .col{width:100%;height:300px} .image-columns{flex-direction:column;gap:12px} .stack{padding:10px} .hero-title{font-size:28px} .tile{height:140px} }
   </style>
 </head>
@@ -161,10 +116,10 @@
   <header>
     <div class="inner">
       <div class="nav">
-      <div class="brand" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-         <img src="./assets/_fundo_transparente.webp" alt="" style="height:32px;">
-        <span>Mercados.</span>
-      </div>
+        <div class="brand" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+          <img src="./assets/_fundo_transparente.webp" alt="Sebrae" style="height:32px;">
+          <span>Mercados.</span>
+        </div>
 
         <nav class="menu" aria-label="Navegação principal">
           <a href="#sobre">Sobre</a>
@@ -183,7 +138,7 @@
       <div>
         <div class="hero-panel" role="region" aria-label="Resumo">
           <h1 class="hero-title">Inteligência de<br/>Mercado.</h1>
-          <p class="hero-lead">Canal digital que reúne insights, análises e recomendações para apoiar a Rede  e os pequenos negócios. Conteúdo em versão beta.</p>
+          <p class="hero-lead">Canal digital que reúne insights, análises e recomendações para apoiar a Rede e os pequenos negócios. Conteúdo em versão beta.</p>
 
           <div class="hero-ctas">
             <a class="btn" href="#todos-insights">Ver todos os insights</a>
@@ -203,80 +158,75 @@
       </div>
 
       <!-- RIGHT: two columns of images using your uploaded assets -->
-      <div class="image-columns" aria-hidden="false">
-        <div class="col col-1" role="group" aria-label="Galeria 1">
-          <!-- stack contains a sequence and then the same sequence duplicated for seamless loop -->
-          <div class="stack animated" aria-hidden="true">
-            <!-- sequence start -->
-            <div class="tile" data-tag="Conveniência" tabindex="0">
-              <img src="./assets/hero-minimercado.webp" alt="Minimercado - prateleiras" loading="lazy" decoding="async" width="1200" height="800" onerror="handleImgError(this)">
-              <div class="pill" style="display:none">Conveniência</div>
-            </div>
+      <div>
+        <!-- Sebrae central (novo) -->
+        <div class="sebrae-center" aria-hidden="false">
+          <img src="./assets/sebrae_fundo_transparente.webp" alt="Sebrae" loading="lazy" width="240" height="64">
+        </div>
 
-            <div class="tile" data-tag="Feira" tabindex="0">
-              <img src="./assets/feira_livre.webp" alt="Feira livre" loading="lazy" decoding="async" width="1200" height="800" onerror="handleImgError(this)">
-              <div class="pill" style="display:none">Feira</div>
+        <div class="image-columns" aria-hidden="false">
+          <div class="col col-1" role="group" aria-label="Galeria 1">
+            <div class="stack animated" aria-hidden="true">
+              <div class="tile" data-tag="Conveniência" tabindex="0">
+                <img src="./assets/hero-minimercado.webp" alt="Minimercado - prateleiras" loading="lazy" decoding="async" width="1200" height="800" onerror="handleImgError(this)">
+                <div class="pill" style="display:none">Conveniência</div>
+              </div>
+              <div class="tile" data-tag="Feira" tabindex="0">
+                <img src="./assets/feira_livre.webp" alt="Feira livre" loading="lazy" decoding="async" width="1200" height="800" onerror="handleImgError(this)">
+                <div class="pill" style="display:none">Feira</div>
+              </div>
+              <div class="tile" data-tag="Frutas" tabindex="0">
+                <img src="./assets/frutas_feira.webp" alt="Frutas" loading="lazy" decoding="async" width="1200" height="800" onerror="handleImgError(this)">
+                <div class="pill" style="display:none">Frutas</div>
+              </div>
+              <!-- duplicated -->
+              <div class="tile" data-tag="Conveniência" tabindex="0">
+                <img src="./assets/hero-minimercado.webp" alt="Minimercado - prateleiras" loading="lazy" decoding="async" width="1200" height="800" onerror="handleImgError(this)">
+                <div class="pill" style="display:none">Conveniência</div>
+              </div>
+              <div class="tile" data-tag="Feira" tabindex="0">
+                <img src="./assets/feira_livre.webp" alt="Feira livre" loading="lazy" decoding="async" width="1200" height="800" onerror="handleImgError(this)">
+                <div class="pill" style="display:none">Feira</div>
+              </div>
+              <div class="tile" data-tag="Frutas" tabindex="0">
+                <img src="./assets/frutas_feira.webp" alt="Frutas" loading="lazy" decoding="async" width="1200" height="800" onerror="handleImgError(this)">
+                <div class="pill" style="display:none">Frutas</div>
+              </div>
             </div>
+          </div>
 
-            <div class="tile" data-tag="Frutas" tabindex="0">
-              <img src="./assets/frutas_feira.webp" alt="Frutas" loading="lazy" decoding="async" width="1200" height="800" onerror="handleImgError(this)">
-              <div class="pill" style="display:none">Frutas</div>
-            </div>
-            <!-- sequence duplicated (exact order) -->
-            <div class="tile" data-tag="Conveniência" tabindex="0">
-              <img src="./assets/hero-minimercado.webp" alt="Minimercado - prateleiras" loading="lazy" decoding="async" width="1200" height="800" onerror="handleImgError(this)">
-              <div class="pill" style="display:none">Conveniência</div>
-            </div>
-
-            <div class="tile" data-tag="Feira" tabindex="0">
-              <img src="./assets/feira_livre.webp" alt="Feira livre" loading="lazy" decoding="async" width="1200" height="800" onerror="handleImgError(this)">
-              <div class="pill" style="display:none">Feira</div>
-            </div>
-
-            <div class="tile" data-tag="Frutas" tabindex="0">
-              <img src="./assets/frutas_feira.webp" alt="Frutas" loading="lazy" decoding="async" width="1200" height="800" onerror="handleImgError(this)">
-              <div class="pill" style="display:none">Frutas</div>
+          <div class="col col-2" role="group" aria-label="Galeria 2">
+            <div class="stack animated" aria-hidden="true">
+              <div class="tile" data-tag="Varejo" tabindex="0">
+                <img src="./assets/loja_roupas_feira.webp" alt="Loja de roupas" loading="lazy" decoding="async" width="1200" height="800" onerror="handleImgError(this)">
+                <div class="pill" style="display:none">Varejo</div>
+              </div>
+              <div class="tile" data-tag="Cabides" tabindex="0">
+                <img src="./assets/cabide_roupas_masculinas.webp" alt="Cabide roupas" loading="lazy" decoding="async" width="1200" height="800" onerror="handleImgError(this)">
+                <div class="pill" style="display:none">Cabide</div>
+              </div>
+              <div class="tile" data-tag="Cafeteria" tabindex="0">
+                <img src="./assets/mulher_sentada_cafeteria.webp" alt="Pessoa em cafeteria" loading="lazy" decoding="async" width="1200" height="800" onerror="handleImgError(this)">
+                <div class="pill" style="display:none">Cafeteria</div>
+              </div>
+              <!-- duplicated -->
+              <div class="tile" data-tag="Varejo" tabindex="0">
+                <img src="./assets/loja_roupas_feira.webp" alt="Loja de roupas" loading="lazy" decoding="async" width="1200" height="800" onerror="handleImgError(this)">
+                <div class="pill" style="display:none">Varejo</div>
+              </div>
+              <div class="tile" data-tag="Cabides" tabindex="0">
+                <img src="./assets/cabide_roupas_masculinas.webp" alt="Cabide roupas" loading="lazy" decoding="async" width="1200" height="800" onerror="handleImgError(this)">
+                <div class="pill" style="display:none">Cabide</div>
+              </div>
+              <div class="tile" data-tag="Cafeteria" tabindex="0">
+                <img src="./assets/mulher_sentada_cafeteria.webp" alt="Pessoa em cafeteria" loading="lazy" decoding="async" width="1200" height="800" onerror="handleImgError(this)">
+                <div class="pill" style="display:none">Cafeteria</div>
+              </div>
             </div>
           </div>
         </div>
-
-        <div class="col col-2" role="group" aria-label="Galeria 2">
-          <div class="stack animated" aria-hidden="true">
-            <!-- sequence start -->
-            <div class="tile" data-tag="Varejo" tabindex="0">
-              <img src="./assets/loja_roupas_feira.webp" alt="Loja de roupas" loading="lazy" decoding="async" width="1200" height="800" onerror="handleImgError(this)">
-              <div class="pill" style="display:none">Varejo</div>
-            </div>
-
-            <div class="tile" data-tag="Cabides" tabindex="0">
-              <img src="./assets/cabide_roupas_masculinas.webp" alt="Cabide roupas" loading="lazy" decoding="async" width="1200" height="800" onerror="handleImgError(this)">
-              <div class="pill" style="display:none">Cabide</div>
-            </div>
-
-            <div class="tile" data-tag="Cafeteria" tabindex="0">
-              <img src="./assets/mulher_sentada_cafeteria.webp" alt="Pessoa em cafeteria" loading="lazy" decoding="async" width="1200" height="800" onerror="handleImgError(this)">
-              <div class="pill" style="display:none">Cafeteria</div>
-            </div>
-
-            <!-- duplicated -->
-            <div class="tile" data-tag="Varejo" tabindex="0">
-              <img src="./assets/loja_roupas_feira.webp" alt="Loja de roupas" loading="lazy" decoding="async" width="1200" height="800" onerror="handleImgError(this)">
-              <div class="pill" style="display:none">Varejo</div>
-            </div>
-
-            <div class="tile" data-tag="Cabides" tabindex="0">
-              <img src="./assets/cabide_roupas_masculinas.webp" alt="Cabide roupas" loading="lazy" decoding="async" width="1200" height="800" onerror="handleImgError(this)">
-              <div class="pill" style="display:none">Cabide</div>
-            </div>
-
-            <div class="tile" data-tag="Cafeteria" tabindex="0">
-              <img src="./assets/mulher_sentada_cafeteria.webp" alt="Pessoa em cafeteria" loading="lazy" decoding="async" width="1200" height="800" onerror="handleImgError(this)">
-              <div class="pill" style="display:none">Cafeteria</div>
-            </div>
-          </div>
-        </div>
-
       </div>
+
     </div>
   </section>
 
@@ -292,6 +242,33 @@
           <div class="chip" data-filter="mini">Minimercados</div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- DESTAQUE: O PONTO CERTO (nova seção) -->
+  <section id="opontocerto" class="inner" aria-labelledby="opc-title" style="padding-top:18px">
+    <div class="opontocerto-card" role="region" aria-label="Destaque O Ponto Certo">
+      <div class="opc-info">
+        <h3 id="opc-title">Destaque — O Ponto Certo</h3>
+        <p>Visualize o painel do O Ponto Certo rapidamente. Se o preview estiver bloqueado por políticas do site, clique em "Abrir painel" para acessar em nova aba.</p>
+        <p class="opc-note" style="margin-top:10px">Sugestão: usar o preview para treinamentos rápidos e o link para acessar o painel com credenciais completas.</p>
+        <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+          <button id="opc-toggle" class="btn" aria-pressed="false">Abrir preview</button>
+          <a class="btn" href="https://opontocerto.sebrae.com.br/painel" target="_blank" rel="noopener" style="background:transparent;border:1px solid rgba(255,255,255,0.06)">Abrir painel</a>
+        </div>
+      </div>
+
+      <div class="opc-preview" aria-hidden="false">
+        <div class="preview-box" id="opcPreviewBox" aria-live="polite" role="region" aria-label="Preview do O Ponto Certo">
+          <!-- inicialmente mostra imagem fallback; JS tenta carregar iframe -->
+          <img id="opcFallbackImg" src="./assets/opontocerto_preview.webp" alt="Preview O Ponto Certo" loading="lazy" width="360" height="220" onerror="this.style.display='none'">
+          <!-- iframe será injetado via JS se permitido -->
+        </div>
+        <div class="preview-controls">
+          <div class="opc-note" id="opcStatus">Preview: imagem de amostra</div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -461,6 +438,82 @@
       });
     });
   })();
+
+  /* --------------- O PONTO CERTO preview logic --------------- */
+  (function(){
+    const btn = document.getElementById('opc-toggle');
+    const previewBox = document.getElementById('opcPreviewBox');
+    const fallbackImg = document.getElementById('opcFallbackImg');
+    const status = document.getElementById('opcStatus');
+    const PANEL_URL = 'https://opontocerto.sebrae.com.br/painel';
+
+    let iframe = null;
+    let iframeLoaded = false;
+    let iframeAttempted = false;
+
+    function showStatus(text){ if(status) status.textContent = text; }
+
+    async function tryInsertIframe(){
+      if(iframeAttempted) return;
+      iframeAttempted = true;
+      showStatus('Tentando carregar preview...');
+      // create iframe but don't assume it will show content (may be blocked)
+      iframe = document.createElement('iframe');
+      iframe.src = PANEL_URL;
+      iframe.style.width = '100%';
+      iframe.style.height = '100%';
+      iframe.style.border = '0';
+      iframe.title = 'Preview do O Ponto Certo';
+      iframe.loading = 'lazy';
+
+      // Listen for load and use timeout to detect likely block
+      let loaded = false;
+      const onLoad = ()=>{ loaded = true; iframeLoaded = true; showStatus('Preview carregado — interativo'); };
+      const onError = ()=>{ loaded = false; showStatus('Preview indisponível (bloqueado) — abra em nova aba'); };
+
+      iframe.addEventListener('load', onLoad);
+      iframe.addEventListener('error', onError);
+
+      // insert iframe (hidden initially)
+      previewBox.appendChild(iframe);
+      // after short delay, check if loaded; if not, assume blocked and remove iframe
+      setTimeout(()=>{
+        // If load event fired, keep iframe. Otherwise remove and show fallback.
+        if(!loaded){
+          // remove iframe as it's probably blocked by X-Frame-Options
+          try{ iframe.remove(); }catch(e){}
+          iframe = null;
+          showStatus('Preview bloqueado por políticas do site — use "Abrir painel"');
+        }
+      }, 1600);
+    }
+
+    // toggle button
+    btn.addEventListener('click', async function(){
+      const pressed = this.getAttribute('aria-pressed') === 'true';
+      if(!pressed){
+        // open preview: attempt iframe; hide fallback image if iframe loads
+        this.setAttribute('aria-pressed','true');
+        this.textContent = 'Fechar preview';
+        showStatus('Tentando abrir preview...');
+        // attempt to insert iframe
+        tryInsertIframe();
+      } else {
+        // close preview: remove iframe if present, show fallback image
+        this.setAttribute('aria-pressed','false');
+        this.textContent = 'Abrir preview';
+        if(iframe){
+          try{ iframe.remove(); }catch(e){}
+          iframe = null;
+        }
+        showStatus('Preview: imagem de amostra');
+      }
+    });
+
+    // also add link fallback note (in case iframe blocked)
+    // note: user can always open panel in new tab via provided link
+  })();
 </script>
+
 </body>
 </html>
