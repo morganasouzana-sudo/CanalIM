@@ -27,27 +27,8 @@
 
     /* header */
     header{background:var(--bg);border-bottom:1px solid rgba(255,255,255,0.03);position:sticky;top:0;z-index:40}
-    .nav {
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:12px 0;
-  position:relative;
-  padding-left:50px;
-  padding-right:50px;
-}
-
-   .brand {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-weight: 800;
-  cursor: pointer;
-}
-
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:800;cursor:pointer}
     .brand img{height:30px}
     .menu{display:flex;gap:12px}
     .menu a{font-size:14px;padding:6px 8px;border-radius:8px;color:rgba(255,255,255,0.9)}
@@ -66,42 +47,6 @@
     .hero-lead { color:var(--muted); font-size:15px; max-width:760px; margin:0 0 18px; line-height:1.45; text-shadow:0 4px 14px rgba(0,0,0,0.35) }
     .hero-ctas{display:flex;gap:12px}
     .btn{background:linear-gradient(180deg,var(--accent),var(--accent-2));padding:10px 16px;border-radius:10px;color:#fff;font-weight:700;display:inline-block}
-<section class="inner" style="margin-top:24px;">
-  <div style="
-    background: var(--card-bg);
-    border-radius: 14px;
-    padding: 24px;
-    border: 1px solid rgba(255,255,255,0.06);
-    box-shadow: 0 12px 32px rgba(0,0,0,0.35);
-    display: flex;
-    gap: 20px;
-    align-items: center;
-  ">
-    
-    <!-- imagem lateral -->
-    <div style="flex:0 0 240px;">
-      <img src="./assets/opc_mock.webp" alt="O Ponto Certo – preview"
-       style="width:100%;height:auto;border-radius:12px;object-fit:cover;">
-    </div>
-
-    <!-- texto -->
-    <div style="flex:1;">
-      <h2 style="margin:0 0 10px;">O Ponto Certo — Inteligência para o seu território</h2>
-      <p style="margin:0 0 16px; color:var(--muted); font-size:15px;">
-        Acesse mapas, indicadores locais, potencial de consumo e oportunidades
-        dos Pequenos Negócios em qualquer município do Brasil.
-      </p>
-
-      <a class="btn" 
-         href="https://opontocerto.sebrae.com.br/painel" 
-         target="_blank" 
-         style="padding:12px 16px;font-size:15px;">
-        Acessar o Ponto Certo
-      </a>
-    </div>
-
-  </div>
-</section>
 
     /* image columns - larger */
     .image-columns { display:flex; gap:18px; justify-content:center; align-items:flex-start; overflow:hidden; }
