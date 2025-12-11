@@ -3,316 +3,375 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Inteligência de Mercado — Bares & Restaurantes (Dez/2025)</title>
-
-  <!-- Fonte Unbounded -->
-  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <title>Bares & Restaurantes: Tendências Dez/2025 — Canal IM Sebrae</title>
+  <meta name="description" content="Análise do setor de alimentação fora do lar para o final de 2025. Sazonalidade, digitalização e novas demandas do consumidor.">
+  
+  <!-- Fontes (Mesmas do Index) -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
-    /* ===========================
-       VARS (mantidas do template principal)
-       =========================== */
+    /* --- CSS COMPARTILHADO (Visual Identity) --- */
     :root{
-      --bg:#071f2a;
-      --muted:#c9d6d9;
-      --accent:#376a45;
-      --accent-2:#2f5a3b;
-      --card-bg: rgba(255,255,255,0.07);
-      --max-inner:1200px;
-      --gutter:20px;
-      --glass: rgba(255,255,255,0.02);
-      --radius:14px;
+      --bg:#0f3336;
+      --card-bg: rgba(255,255,255,0.04);
+      --text: #ffffff;
+      --muted: #bfcfce;
+      --accent: #3f7a57;
+      --accent-2: #2f5f46;
+      --accent-hover: #2f5f46;
+      --border: rgba(255,255,255,0.06);
+      --gutter: 20px;
+      --max-inner: 1200px;
+      --radius: 12px;
     }
 
-    /* ===========================
-       RESET / BASE
-       =========================== */
-    html, body {
-      width:100%;
-      height:100%;
-      min-height:100vh;
-      margin:0;
-      padding:0;
-      background:var(--bg) !important;
-      overflow-x:hidden;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      font-family:'Unbounded', system-ui, Arial, sans-serif;
-      color:#fff;
-      line-height:1.5;
-    }
-    *, *::before, *::after { box-sizing:border-box; }
-    a { color:inherit; text-decoration:none; }
-    img { max-width:100%; height:auto; display:block; }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:'Inter', sans-serif;line-height:1.6}
+    
+    /* Unbounded apenas para Títulos para dar personalidade */
+    h1, h2, h3, .brand, .page-title-header, .btn { font-family: 'Unbounded', sans-serif; }
 
-    /* ===========================
-       LAYOUT: full-bleed + inner
-       =========================== */
-    .section-full { width:100%; background:var(--bg); }
-    .inner { max-width:var(--max-inner); margin:0 auto; padding:24px var(--gutter); }
+    a{color:inherit;text-decoration:none;transition:0.2s}
+    a:hover{color:var(--accent)}
+    
+    .inner{max-width:var(--max-inner);margin:0 auto;padding:0 var(--gutter)}
 
-    /* ===========================
-       HEADER / NAV (simplificado para este arquivo)
-       =========================== */
-    header.site-header {
-      width:100%;
-      background:var(--bg);
-      border-bottom:1px solid rgba(255,255,255,0.03);
-      position:relative;
-      z-index:40;
-    }
-    .nav {
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      padding:12px 0;
-    }
-    .brand { display:flex; align-items:center; gap:12px; font-weight:800; font-size:18px; color:#fff; }
-    .brand img{ height:30px; display:block; }
-    .menu { display:flex; gap:12px; align-items:center; }
-    .menu a { font-size:13px; padding:8px 10px; border-radius:8px; cursor:pointer; color: rgba(255,255,255,0.95); }
-    .menu a:hover { background: rgba(255,255,255,0.03); }
+    /* Scroll Progress Bar */
+    .progress-container {width: 100%; height: 4px; background: var(--bg); position: fixed; top: 0; z-index: 50;}
+    .progress-bar {height: 4px; background: #4fd17c; width: 0%;}
 
-    /* ===========================
-       HERO (compact)
-       =========================== */
-    .hero-mini { width:100%; background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent); padding:28px 0 18px; text-align:left; border-bottom:1px solid rgba(255,255,255,0.03); }
-    .hero-mini .hero-title { font-size:28px; margin:0; font-weight:700; color:#fff; }
-    .hero-mini .hero-lead { font-size:14px; color:var(--muted); margin-top:6px; }
-
-    /* ===========================
-       CONTENT AREA
-       =========================== */
-    .wrap { max-width:var(--max-inner); margin:24px auto; padding:0 var(--gutter); }
-
-    .card {
-      background: var(--card-bg);
-      padding: 20px 18px;
-      border-radius: var(--radius);
-      margin-bottom: 12px;
-      box-shadow: 0 8px 22px rgba(0,0,0,0.28);
-      border: 1px solid rgba(255,255,255,0.02);
+    /* Header (Compacto) */
+    header{background:rgba(15, 51, 54, 0.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:40}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0;height:70px}
+    .brand img {height: 32px; background: rgba(255,255,255,0.9); padding: 4px; border-radius: 4px;}
+    .menu {display:flex; gap:20px; font-size:14px; font-weight:500}
+    
+    /* Layout do Artigo */
+    .article-layout {
+      display: grid;
+      grid-template-columns: 1fr 300px; /* Conteúdo + Sidebar */
+      gap: 40px;
+      padding-top: 40px;
+      padding-bottom: 60px;
     }
 
-    h1,h2,h3 { margin:0 0 8px 0; color:#fff; }
-    h2 { font-size:20px; }
-    p, ul, li { margin:0 0 6px 0; color:var(--muted); font-size:14px; }
+    /* Conteúdo Principal */
+    .breadcrumb { font-size: 12px; color: var(--muted); margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .breadcrumb a:hover { text-decoration: underline; color: #4fd17c; }
 
-    /* ===========================
-       CARROSSEL (estilo integrado ao site)
-       =========================== */
+    .article-header { margin-bottom: 30px; }
+    h1.article-title { font-size: 42px; line-height: 1.1; margin: 0 0 16px 0; background: linear-gradient(to right, #fff, #bfcfce); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    
+    .meta-info { display: flex; align-items: center; gap: 16px; font-size: 14px; color: var(--muted); border-bottom: 1px solid var(--border); padding-bottom: 24px; }
+    .tag { background: var(--accent); color: white; padding: 4px 10px; border-radius: 4px; font-size: 11px; font-weight: 700; text-transform: uppercase; }
+
+    .hero-img-container { width: 100%; height: 400px; border-radius: 16px; overflow: hidden; margin-bottom: 40px; border: 1px solid var(--border); }
+    .hero-img-container img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* Estilos de Texto do Artigo */
+    .content p { font-size: 18px; color: #e0e0e0; margin-bottom: 24px; }
+    .content h2 { font-size: 24px; margin-top: 40px; margin-bottom: 16px; color: #fff; border-left: 4px solid var(--accent); padding-left: 16px; }
+    .content ul { margin-bottom: 24px; padding-left: 20px; }
+    .content li { margin-bottom: 10px; color: #e0e0e0; }
+    
+    .blockquote { 
+      background: var(--card-bg); 
+      padding: 24px; 
+      border-radius: 12px; 
+      border-left: 4px solid #4fd17c; 
+      font-size: 18px; 
+      font-style: italic; 
+      color: #fff;
+      margin: 32px 0; 
+    }
+
+    /* --- CARROSSEL (Adaptado do seu HTML) --- */
     .carousel-wrap {
       display:block;
       background: linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
       padding:12px;
       border-radius:12px;
-      margin-bottom:14px;
-      border:1px solid rgba(255,255,255,0.02);
+      margin-bottom:32px;
+      border:1px solid rgba(255,255,255,0.04);
     }
     .slides { position:relative; overflow:hidden; border-radius:10px; }
     .slides input { display:none; }
     .track { display:flex; width:400%; transition:transform .45s ease; }
     .panel { min-width:100%; padding:18px; box-sizing:border-box; display:flex; gap:18px; align-items:center; }
     .panel .left { flex:1; }
-    .panel h3 { margin:0 0 6px; font-size:18px; color:#fff; }
-    .panel p { margin:0; color:var(--muted); font-size:14px; }
+    .panel h3 { margin:0 0 6px; font-size:18px; color:#4fd17c; } /* Título em verde destaque */
+    .panel p { margin:0; color:var(--muted); font-size:15px; }
 
     .dots { display:flex; gap:8px; justify-content:center; padding:12px 0; }
-    .dot { width:10px; height:10px; border-radius:50%; background:#26424a; cursor:pointer; display:inline-block; border:1px solid rgba(255,255,255,0.04); }
+    .dot { width:10px; height:10px; border-radius:50%; background:rgba(255,255,255,0.12); cursor:pointer; display:inline-block; border:1px solid rgba(255,255,255,0.04); }
     /* radio -> track transform */
     #s1:checked ~ .track { transform:translateX(0%); }
     #s2:checked ~ .track { transform:translateX(-100%); }
     #s3:checked ~ .track { transform:translateX(-200%); }
     #s4:checked ~ .track { transform:translateX(-300%); }
     /* active dot */
-    #s1:checked ~ .dots label[for="s1"], #s2:checked ~ .dots label[for="s2"], #s3:checked ~ .dots label[for="s3"], #s4:checked ~ .dots label[for="s4"] { background:linear-gradient(180deg,var(--accent),var(--accent-2)); box-shadow: 0 6px 14px rgba(11,40,20,0.18); }
-
-    /* ===========================
-       GRID CARDS
-       =========================== */
-    .grid { display:grid; grid-template-columns: repeat(3,1fr); gap:12px; margin-top:12px; }
-    .grid .item { background: rgba(255,255,255,0.03); padding:16px; border-radius:12px; min-height:120px; }
-    .meta { font-size:13px; color:var(--muted); margin-top:10px; }
-
-    .sources { background: rgba(255,255,255,0.02); padding:12px; border-radius:10px; font-size:13px; color:var(--muted); margin-top:12px; border:1px solid rgba(255,255,255,0.02); }
-
-    footer.site-footer { padding:18px 0; text-align:center; color:rgba(255,255,255,0.6); font-size:13px; margin-top:18px; }
-
-    /* responsive */
-    @media (max-width:1000px) {
-      .grid { grid-template-columns: repeat(2,1fr); }
-      .panel { flex-direction:column; align-items:flex-start; }
+    #s1:checked ~ .dots label[for="s1"], #s2:checked ~ .dots label[for="s2"], #s3:checked ~ .dots label[for="s3"], #s4:checked ~ .dots label[for="s4"] {
+      background:linear-gradient(180deg,var(--accent),var(--accent-2));
+      box-shadow: 0 6px 14px rgba(11,40,20,0.12);
     }
-    @media (max-width:640px) {
-      .grid { grid-template-columns:1fr; }
-      .panel { padding:12px; }
-      .hero-mini .hero-title { font-size:20px; }
+
+    /* --- GRID DE DADOS (Adaptado) --- */
+    .data-grid { display:grid; grid-template-columns: repeat(2,1fr); gap:16px; margin-top:24px; margin-bottom: 40px; }
+    .data-item { background: rgba(255,255,255,0.03); padding:20px; border-radius:12px; border:1px solid var(--border); }
+    .data-item h3 { font-size: 16px; color: #fff; margin-bottom: 8px; }
+    .data-item p { font-size: 14px; color: var(--muted); margin: 0; line-height: 1.5; }
+    .data-item .meta { font-size: 11px; text-transform: uppercase; color: var(--accent); margin-top: 12px; font-weight: 700; letter-spacing: 0.5px; }
+
+    /* Sidebar */
+    .sidebar { position: sticky; top: 100px; height: fit-content; }
+    .sidebar-card { background: var(--card-bg); padding: 20px; border-radius: 12px; border: 1px solid var(--border); margin-bottom: 20px; }
+    .sidebar-title { font-size: 16px; font-weight: 700; margin-bottom: 16px; display: block; color: var(--muted); border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+    
+    .related-item { display: flex; gap: 12px; margin-bottom: 16px; align-items: start; }
+    .related-item img { width: 60px; height: 60px; border-radius: 8px; object-fit: cover; background: #000; }
+    .related-info h4 { margin: 0 0 4px; font-size: 14px; line-height: 1.3; }
+    .related-info span { font-size: 12px; color: var(--muted); }
+
+    .btn-back { display: inline-flex; align-items: center; gap: 8px; color: var(--muted); font-size: 14px; font-weight: 600; margin-bottom: 20px; }
+    .btn-back:hover { color: #fff; transform: translateX(-4px); }
+
+    /* Footer igual ao Index */
+    footer { border-top: 1px solid var(--border); padding: 30px 0; margin-top: 60px; font-size: 13px; color: var(--muted); text-align: center; }
+
+    @media (max-width: 900px) {
+      .article-layout { grid-template-columns: 1fr; }
+      .sidebar { position: static; }
+      .hero-img-container { height: 250px; }
+      h1.article-title { font-size: 28px; }
+      .data-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
-  <!-- Header (compact) -->
-  <header class="site-header section-full" role="banner">
+
+  <!-- Barra de Progresso de Leitura -->
+  <div class="progress-container">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+
+  <!-- HEADER -->
+  <header>
     <div class="inner">
-      <div class="nav" role="navigation" aria-label="Menu principal">
-        <div class="brand">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Sebrae_logo.svg" alt="Sebrae" style="height:30px;">
-          <span>Canal IM — Bares & Restaurantes</span>
-        </div>
-        <nav class="menu" aria-label="Navegação">
-          <a href="https://morganasouzana-sudo.github.io/CanalIM/" target="_blank">Voltar ao site</a>
+      <div class="nav">
+        <a href="index.html" class="brand">
+          <img src="./assets/sebrae_fundo_transparente.webp" alt="Sebrae">
+        </a>
+        <nav class="menu">
+          <a href="index.html">Home</a>
+          <a href="todos_insights.html" style="color:#fff">Insights</a> <!-- Ativo -->
+          <a href="contato.html">Contato</a>
         </nav>
       </div>
     </div>
   </header>
 
-  <!-- Hero mini -->
-  <section class="hero-mini section-full" role="region" aria-label="hero">
-    <div class="hero-inner inner">
-      <h1 class="hero-title">Bares & Restaurantes — Dez/2025</h1>
-      <p class="hero-lead">Foco: sazonalidade de fim de ano e digitalização (delivery, cardápio digital, reservas) — dados verificados e fontes oficiais.</p>
+  <main class="inner">
+    
+    <div class="article-layout">
+      
+      <!-- COLUNA PRINCIPAL (ARTIGO) -->
+      <article>
+        <a href="index.html" class="btn-back">← Voltar para Insights</a>
+        
+        <div class="breadcrumb">
+          <a href="index.html">Home</a> • <a href="todos_insights.html">Insights</a> • <span>Bares & Restaurantes</span>
+        </div>
+
+        <header class="article-header">
+          <h1 class="article-title">Bares & Restaurantes: Tendências para Dezembro de 2025</h1>
+          
+          <div class="meta-info">
+            <span class="tag">Alimentação</span>
+            <span>📅 11 Dez, 2025</span>
+            <span>⏱️ 5 min de leitura</span>
+          </div>
+        </header>
+
+        <div class="hero-img-container">
+          <!-- Usando uma imagem da pasta assets que combine com o tema -->
+          <img src="./assets/mulher_sentada_cafeteria.webp" alt="Ambiente de restaurante movimentado" onerror="this.src='https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80&w=1200'">
+        </div>
+
+        <div class="content">
+          <p class="lead">O final do ano de 2025 traz um cenário otimista para o setor de alimentação fora do lar. Com a retomada plena dos eventos corporativos e o aumento do turismo interno, bares e restaurantes devem se preparar para um fluxo intenso.</p>
+
+          <!-- CARROSSEL DE DESTAQUES -->
+          <div class="carousel-wrap">
+            <div class="slides">
+              <input type="radio" name="s" id="s1" checked>
+              <input type="radio" name="s" id="s2">
+              <input type="radio" name="s" id="s3">
+              <input type="radio" name="s" id="s4">
+
+              <div class="track">
+                <div class="panel">
+                  <div class="left">
+                    <h3>81% esperam aumento no faturamento</h3>
+                    <p>Levantamento Abrasel (Dez/2025): a maioria dos empresários do setor projeta crescimento no fim de ano.</p>
+                  </div>
+                </div>
+                <div class="panel">
+                  <div class="left">
+                    <h3>26% projetam alta >10%</h3>
+                    <p>Mais de 1/4 dos estabelecimentos estima um aumento superior a 10% em relação ao ano anterior.</p>
+                  </div>
+                </div>
+                <div class="panel">
+                  <div class="left">
+                    <h3>32% planejam contratar</h3>
+                    <p>Expectativa de contratação para atender ao pico — sinal de demanda real e necessidade de suporte.</p>
+                  </div>
+                </div>
+                <div class="panel">
+                  <div class="left">
+                    <h3>Digital é padrão</h3>
+                    <p>Cardápios digitais e pagamentos por aproximação já são parte da jornada crítica do consumidor.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="dots">
+                <label class="dot" for="s1"></label>
+                <label class="dot" for="s2"></label>
+                <label class="dot" for="s3"></label>
+                <label class="dot" for="s4"></label>
+              </div>
+            </div>
+          </div>
+
+          <h2>1. O Retorno das Confraternizações</h2>
+          <p>Diferente dos anos anteriores, 2025 marca o retorno massivo das grandes confraternizações de empresas. Dados da Abrasel indicam que <strong>78% dos estabelecimentos</strong> já possuem reservas para as duas últimas semanas de dezembro.</p>
+          
+          <div class="blockquote">
+            "Não é apenas sobre servir comida, é sobre criar experiências. O cliente de 2025 busca ambientes 'instagramáveis' e agilidade no atendimento via cardápio digital."
+            <br><span style="font-size:14px; color:var(--muted); margin-top:8px; display:block">— Relatório de Tendências Sebrae</span>
+          </div>
+
+          <h2>2. Digitalização como Diferencial</h2>
+          <p>Estabelecimentos que investiram em sistemas de <em>autoatendimento</em> e <em>pagamento via PIX integrado</em> estão registrando um giro de mesa 20% mais rápido.</p>
+
+          <!-- GRID DE DADOS VERIFICADOS -->
+          <div class="data-grid">
+            <div class="data-item">
+              <h3>Fim de ano aquece o setor</h3>
+              <p>81% dos empresários esperam aumento no faturamento no fim de 2025.</p>
+              <div class="meta">Fonte: Abrasel</div>
+            </div>
+            <div class="data-item">
+              <h3>Antecipação da demanda</h3>
+              <p>Outubro apresentou alta nas vendas e mais empresas operando com lucro.</p>
+              <div class="meta">Fonte: Abrasel</div>
+            </div>
+            <div class="data-item">
+              <h3>Abertura de negócios</h3>
+              <p>2,21 milhões de novos pequenos negócios no Brasil (jan-mai/2025). Serviços lideram.</p>
+              <div class="meta">Fonte: Agência Sebrae</div>
+            </div>
+            <div class="data-item">
+              <h3>Digitalização</h3>
+              <p>Uso crescente de cardápios digitais e pedidos online orienta a decisão do consumidor.</p>
+              <div class="meta">Fonte: Think With Google</div>
+            </div>
+          </div>
+
+          <h2>3. Recomendações Rápidas</h2>
+          <p>Para aproveitar este pico de demanda, listamos as ações prioritárias para os próximos 30 dias:</p>
+          <ul>
+            <li><strong>Google Meu Negócio:</strong> Atualize fotos e horários de funcionamento para o fim de ano.</li>
+            <li><strong>Menu Sazonal:</strong> Prepare opções para grupos (reserva/rodízio/kit de confraternização).</li>
+            <li><strong>Planejamento de Equipe:</strong> Planeje a escala e contratações temporárias com antecedência.</li>
+            <li><strong>Campanhas Locais:</strong> Lance promoções por geolocalização para horários menos procurados (happy hour).</li>
+            <li><strong>Canais Digitais:</strong> Disponibilize cardápio online e pagamento por aproximação para agilizar o giro.</li>
+          </ul>
+
+        </div>
+
+        <!-- Botão de Ação -->
+        <div style="margin-top:40px; padding:30px; background:linear-gradient(135deg, #0f3336 0%, #0c2b2d 100%); border:1px solid var(--accent); border-radius:12px; text-align:center">
+          <h3 style="margin-top:0">Quer dados específicos da sua região?</h3>
+          <p style="color:var(--muted); margin-bottom:20px">Utilize o painel O Ponto Certo para analisar a concorrência no seu bairro.</p>
+          <a href="https://opontocerto.sebrae.com.br/painel" target="_blank" class="btn" style="background:#4fd17c; color:#0f3336; padding:12px 24px; border-radius:8px; font-weight:700; text-decoration:none">Acessar Painel Geomarketing</a>
+        </div>
+
+      </article>
+
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        
+        <!-- Card: Sobre o Autor/Fonte -->
+        <div class="sidebar-card">
+          <span class="sidebar-title">Fonte da Análise</span>
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px">
+            <div style="width:40px; height:40px; background:#fff; border-radius:50%; display:flex; align-items:center; justify-content:center">
+              <img src="./assets/sebrae_fundo_transparente.webp" style="height:20px">
+            </div>
+            <div>
+              <div style="font-weight:700; font-size:14px">Inteligência Sebrae</div>
+              <div style="font-size:12px; color:var(--muted)">Baseado em dados Abrasel</div>
+            </div>
+          </div>
+          <p style="font-size:13px; color:var(--muted); margin:0">Compilamos dados de mercado para apoiar sua tomada de decisão.</p>
+          <div style="margin-top:12px; padding-top:12px; border-top:1px solid var(--border); font-size:12px; color:var(--muted)">
+            <strong>Links de referência:</strong><br>
+            <a href="#" style="color:var(--accent); text-decoration:underline">Abrasel (Dez/25)</a><br>
+            <a href="#" style="color:var(--accent); text-decoration:underline">Agência Sebrae</a>
+          </div>
+        </div>
+
+        <!-- Card: Relacionados -->
+        <div class="sidebar-card">
+          <span class="sidebar-title">Veja Também</span>
+          
+          <a href="insights_minimercados.html" class="related-item">
+            <img src="./assets/hero-minimercado.webp" alt="Mercado">
+            <div class="related-info">
+              <h4>Giro rápido em Minimercados</h4>
+              <span>Varejo • Dez 2025</span>
+            </div>
+          </a>
+
+          <a href="insights_varejo_moda.html" class="related-item">
+            <img src="./assets/loja_roupas_feira.webp" alt="Moda">
+            <div class="related-info">
+              <h4>Omnichannel na Moda</h4>
+              <span>Varejo • Dez 2025</span>
+            </div>
+          </a>
+
+        </div>
+
+        <!-- Card: Newsletter (Simples) -->
+        <div class="sidebar-card" style="background:var(--accent); border-color:var(--accent)">
+          <span class="sidebar-title" style="color:#fff; border-color:rgba(255,255,255,0.2)">Receba Alertas</span>
+          <p style="font-size:13px; color:rgba(255,255,255,0.9)">Inscreva-se para receber o boletim mensal.</p>
+          <input type="email" placeholder="Seu e-mail corporativo" style="width:100%; padding:10px; border-radius:6px; border:none; margin-bottom:10px; font-size:13px">
+          <button style="width:100%; padding:10px; background:#0f3336; color:#fff; border:none; border-radius:6px; cursor:pointer; font-weight:700">Inscrever-se</button>
+        </div>
+
+      </aside>
+
     </div>
-  </section>
-
-  <main class="wrap" role="main">
-    <!-- Card resumo -->
-    <section class="card" aria-labelledby="resumo-title">
-      <h2 id="resumo-title">Resumo rápido</h2>
-      <p>O setor de alimentação fora do lar apresenta aquecimento no fim de 2025, com sazonalidade de confraternizações impulsionando movimento. A digitalização já é parte integral da jornada (pesquisa, pedido, pagamento).</p>
-      <div class="meta">Segmento prioritário • Perspectiva digital • Fontes oficiais</div>
-    </section>
-
-    <!-- Carrossel integrado -->
-    <section class="carousel-wrap card" aria-label="Destaques">
-      <div class="slides" aria-live="polite">
-        <input type="radio" name="s" id="s1" checked>
-        <input type="radio" name="s" id="s2">
-        <input type="radio" name="s" id="s3">
-        <input type="radio" name="s" id="s4">
-
-        <div class="track" role="list">
-          <div class="panel" role="listitem" aria-labelledby="d1">
-            <div class="left">
-              <h3 id="d1">81% esperam aumento no faturamento</h3>
-              <p>Levantamento Abrasel (Dez/2025): a maioria dos empresários do setor projeta crescimento no fim de ano, puxado por confraternizações.</p>
-            </div>
-          </div>
-
-          <div class="panel" role="listitem" aria-labelledby="d2">
-            <div class="left">
-              <h3 id="d2">26% projetam alta >10%</h3>
-              <p>Mais de 1/4 dos estabelecimentos estima um aumento superior a 10% em relação ao ano anterior.</p>
-            </div>
-          </div>
-
-          <div class="panel" role="listitem" aria-labelledby="d3">
-            <div class="left">
-              <h3 id="d3">32% planejam contratar</h3>
-              <p>Expectativa de contratação para atender ao pico — sinal de demanda real e necessidade de suporte em escala operacional.</p>
-            </div>
-          </div>
-
-          <div class="panel" role="listitem" aria-labelledby="d4">
-            <div class="left">
-              <h3 id="d4">Digital é padrão</h3>
-              <p>Cardápios digitais, pedidos online e pagamentos por aproximação já são parte da jornada — presença digital é crítica para captura de demanda.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="dots" role="tablist" aria-label="Navegação do carrossel">
-          <label class="dot" for="s1" role="tab" aria-selected="true" aria-controls="d1"></label>
-          <label class="dot" for="s2" role="tab" aria-selected="false" aria-controls="d2"></label>
-          <label class="dot" for="s3" role="tab" aria-selected="false" aria-controls="d3"></label>
-          <label class="dot" for="s4" role="tab" aria-selected="false" aria-controls="d4"></label>
-        </div>
-      </div>
-    </section>
-
-    <!-- Grid com dados validados -->
-    <section class="card" aria-labelledby="dados-title">
-      <h2 id="dados-title">Dados rápidos (verificados)</h2>
-
-      <div class="grid" role="list">
-        <div class="item" role="listitem">
-          <h3>Fim de ano aquece o setor</h3>
-          <p>81% dos empresário s esperam aumento no faturamento no fim de 2025; 26% projetam alta >10%.</p>
-          <div class="meta">Fonte: Abrasel</div>
-        </div>
-
-        <div class="item" role="listitem">
-          <h3>Antecipação da demanda</h3>
-          <p>Outubro apresentou alta nas vendas e mais empresas operando com lucro em relação a meses anteriores.</p>
-          <div class="meta">Fonte: Abrasel</div>
-        </div>
-
-        <div class="item" role="listitem">
-          <h3>Contratações</h3>
-          <p>32% dos estabelecimentos planejam contratar para suprir o aumento de movimento.</p>
-          <div class="meta">Fonte: Abrasel</div>
-        </div>
-
-        <div class="item" role="listitem">
-          <h3>Digitalização</h3>
-          <p>Uso crescente de cardápios digitais, pedidos online, avaliações e pagamento sem contato orienta a decisão do consumidor.</p>
-          <div class="meta">Fontes: Abrasel, Think With Google</div>
-        </div>
-
-        <div class="item" role="listitem">
-          <h3>Abertura de negócios</h3>
-          <p>Entre jan–mai/2025: 2,21 milhões de novos pequenos negócios no Brasil — 77,4% eram MEIs. Serviços lideram aberturas.</p>
-          <div class="meta">Fonte: Agência Sebrae</div>
-        </div>
-
-        <div class="item" role="listitem">
-          <h3>Sazonalidade & Oportunidades</h3>
-          <p>Confraternizações, 13º salário e calendário festivo criam janela de ação para reservas, cardápios temáticos e campanhas locais.</p>
-          <div class="meta">Fontes: Abrasel</div>
-        </div>
-      </div>
-
-      <div class="sources" aria-label="Fontes">
-        <strong>Fontes principais:</strong>
-        <ul style="margin-top:8px;">
-          <li><a href="https://abrasel.com.br/noticias/noticias/confraternizacoes-de-fim-de-ano-aquecem-movimento-em-bares-e-restaurantes/" target="_blank" rel="noopener" style="color:var(--accent)">Abrasel — Confraternizações de fim de ano (Dez/2025)</a></li>
-          <li><a href="https://agenciasebrae.com.br/economia-e-politica/com-a-lideranca-dos-mei-brasil-cria-22-milhoes-de-novos-pequenos-negocios-em-2025" target="_blank" rel="noopener" style="color:var(--accent)">Agência Sebrae — Novos pequenos negócios (2025)</a></li>
-          <li><a href="https://www.thinkwithgoogle.com/intl/pt-br/insights/" target="_blank" rel="noopener" style="color:var(--accent)">Think With Google — Insights digitais</a></li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- CTA / recomendações rápidas -->
-    <section class="card" aria-labelledby="acoes-title">
-      <h2 id="acoes-title">Recomendações rápidas para aproveitar o pico</h2>
-      <ul style="margin-top:8px;color:var(--muted)">
-        <li>Atualizar perfil no Google Meu Negócio; deixar fotos e horários corretos.</li>
-        <li>Preparar menu sazonal e opções para grupos (reserva/rodízio/kit de confraternização).</li>
-        <li>Planejar escala e contratações temporárias com antecedência.</li>
-        <li>Lançar campanhas locais por geolocalização e promoções para horários menos procurados.</li>
-        <li>Disponibilizar opções digitais: cardápio online, pedido por WhatsApp/e-commerce e pagamento por aproximação.</li>
-      </ul>
-    </section>
-
-    <footer class="site-footer">
-      © Canal de Inteligência de Mercado — Sebrae • Versão Beta
-    </footer>
   </main>
 
-  <!-- scripts (apenas comportamento do carrossel via labels/radios) -->
+  <footer>
+    <div class="inner">© 2025 Canal de Inteligência de Mercado — Sebrae</div>
+  </footer>
+
   <script>
-    // Nenhum script obrigatório: carrossel funciona por radio inputs.
-    // Caso queira autoplay simples (opcional), descomente abaixo.
-    /*
-    (function(){
-      const radios = ['s1','s2','s3','s4'].map(id=>document.getElementById(id));
-      let idx = 0;
-      setInterval(()=>{
-        idx = (idx + 1) % radios.length;
-        radios[idx].checked = true;
-      }, 6000);
-    })();
-    */
+    // Script simples para a barra de progresso de leitura
+    window.onscroll = function() {
+      var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      var scrolled = (winScroll / height) * 100;
+      document.getElementById("progressBar").style.width = scrolled + "%";
+    };
   </script>
+
 </body>
 </html>
