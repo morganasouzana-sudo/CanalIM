@@ -80,14 +80,19 @@
       position:relative;
       z-index:40;
     }
-    .nav {
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      padding:12px 0;
-    }
-    .brand { display:flex; align-items:center; gap:12px; font-weight:800; font-size:18px; color:var(--text); position: absolute; left: 50%; transform: translateX(-50%);}
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+
+  /* ESTA LINHA É A CHAVE */
+  padding-left: 50px; /* reserva espaço à esquerda */
+  padding-right: 50px; /* reserva espaço à direita */
+}
+
+    .brand { display:flex; align-items:center; gap:12px; font-weight:800; font-size:18px; color:var(--text); position: absolute; left: 50%; transform: translateX(-50%); }
+}
   .brand img {
   height: 56px;
 }
@@ -386,18 +391,19 @@
 }
 
 .page-title-header {
+  position: relative;
   font-weight: 800;
   font-size: 20px;
   color: var(--text);
   white-space: nowrap;
-  display: inline-block;
 
-  /* desloca ligeiramente para baixo para evitar o botão voltar */
-  transform: translateY(6px);
-
-  /* empurra o item para a direita no flex */
+  /* empurra o título para o canto direito */
   margin-left: auto;
+
+  /* descola ele do topo para não colidir com o botão voltar */
+  transform: translateY(6px);
 }
+
 
 
 
